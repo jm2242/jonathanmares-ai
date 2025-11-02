@@ -2,27 +2,86 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark mode via class selector (for user toggle) */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), 'Source Sans Pro', 'Source Sans 3', sans-serif;
+}
+
+/* Headings use Work Sans with weight 600 (same as old site) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), 'Work Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* Navigation and bold text use Work Sans weight 600 */
+nav a,
+button,
+[class*="font-bold"],
+[class*="font-semibold"] {
+  font-family: var(--font-heading), 'Work Sans', sans-serif;
+}
+
+/* Default text color for light mode - near black */
+body:not(.dark) {
+  color: #111111;
+}
+
+/* Ensure headings and text elements use near black in light mode by default */
+:not(.dark) h1,
+:not(.dark) h2,
+:not(.dark) h3,
+:not(.dark) h4,
+:not(.dark) h5,
+:not(.dark) h6 {
+  color: #111111 !important;
+}
+
+:not(.dark) p {
+  color: #1a1a1a !important;
+}
+
+/* Dark mode text colors - ensure all text is light and readable */
+.dark {
+  color: #e5e7eb !important; /* Light gray for body text */
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f3f4f6 !important; /* Very light gray for headings */
+}
+
+.dark p {
+  color: #d1d5db !important; /* Light gray for paragraphs */
+}
+
+/* Ensure post boxes are light in light mode - override any dark styles */
+html:not(.dark) .block.p-6 {
+  background-color: #f9fafb !important;
+}
+
+html:not(.dark) [class*="bg-\[#f9fafb\]"] {
+  background-color: #f9fafb !important;
 }
 
 /* Prism Syntax Highlighting */
@@ -46,14 +105,12 @@ pre[class*="language-"] code {
 }
 
 /* Dark mode */
-@media (prefers-color-scheme: dark) {
-  pre[class*="language-"] {
-    background: #1e1e1e !important;
-  }
-  
-  pre[class*="language-"] code {
-    color: #d4d4d4;
-  }
+.dark pre[class*="language-"] {
+  background: #1e1e1e !important;
+}
+
+.dark pre[class*="language-"] code {
+  color: #d4d4d4;
 }
 
 /* Inline code */
@@ -65,11 +122,9 @@ pre[class*="language-"] code {
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :not(pre) > code {
-    background: #2d2d2d;
-    color: #d4d4d4;
-  }
+.dark :not(pre) > code {
+  background: #2d2d2d;
+  color: #d4d4d4;
 }
 
 /* Prism token colors */
@@ -129,7 +184,7 @@ pre[class*="language-"] code {
 }
 
 /* Dark mode token colors */
-@media (prefers-color-scheme: dark) {
+.dark {
   .token.comment,
   .token.prolog,
   .token.doctype,
@@ -184,4 +239,90 @@ pre[class*="language-"] code {
   .token.variable {
     color: #d7ba7d;
   }
+}
+
+/* Better heading sizes in blog posts - make h2 and h3 more prominent */
+.prose h2 {
+  font-size: 1.75rem !important; /* 28px - about 30% bigger than default prose h2 */
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.3 !important;
+}
+
+.prose h3 {
+  font-size: 1.5rem !important; /* 24px */
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.3 !important;
+}
+
+/* Dark mode prose text - ensure all text in blog posts is light */
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: #f3f4f6 !important; /* Very light for headings */
+}
+
+.dark .prose p {
+  color: #d1d5db !important; /* Light gray for paragraphs */
+}
+
+.dark .prose strong {
+  color: #f9fafb !important; /* Very light for bold text */
+}
+
+.dark .prose li {
+  color: #d1d5db !important; /* Light gray for list items */
+}
+
+.dark .prose code {
+  color: #f3f4f6 !important; /* Light color for inline code */
+}
+
+.dark .prose blockquote {
+  color: #d1d5db !important; /* Light color for blockquotes */
+}
+
+.dark .prose em {
+  color: #d1d5db !important; /* Light color for emphasized text */
+}
+
+/* Better link styling in blog posts - make them more obviously clickable */
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  text-decoration-thickness: 3px;
+}
+
+/* Light mode links */
+:not(.dark) .prose a {
+  color: #2563eb !important; /* Blue-600 */
+  text-decoration-color: #3b82f6 !important; /* Blue-500 */
+}
+
+:not(.dark) .prose a:hover {
+  color: #1d4ed8 !important; /* Blue-700 */
+  text-decoration-color: #2563eb !important; /* Blue-600 */
+}
+
+/* Dark mode links - ensure they're light and visible */
+.dark .prose a {
+  color: #60a5fa !important; /* Light blue for dark mode */
+  text-decoration-color: #3b82f6 !important;
+}
+
+.dark .prose a:hover {
+  color: #93c5fd !important; /* Lighter blue on hover */
+  text-decoration-color: #60a5fa !important;
 }

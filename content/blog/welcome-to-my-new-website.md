@@ -1,6 +1,6 @@
 ---
 title: Welcome to My New Website
-date: 2024-11-02
+date: 2025-11-02
 excerpt: A fresh start with Next.js, TypeScript, and modern web technologies.
 ---
 

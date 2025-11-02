@@ -28,7 +28,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </Link>
 
       <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+        <h1 className="text-4xl font-bold mb-4 text-[#111111] dark:text-gray-100">
           {post.title}
         </h1>
         <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
@@ -49,7 +49,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </header>
 
       <div
-        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 prose-headings:dark:text-gray-100 prose-p:text-gray-700 prose-p:dark:text-gray-300 prose-a:text-blue-600 prose-a:dark:text-blue-400 prose-strong:text-gray-900 prose-strong:dark:text-gray-100 prose-code:text-gray-900 prose-code:dark:text-gray-100 prose-pre:bg-transparent prose-pre:p-0"
+        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-[#111111] prose-headings:dark:text-gray-100 prose-h2:text-2xl prose-h2:font-semibold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:text-[#1a1a1a] prose-p:dark:text-gray-300 prose-a:text-blue-600 prose-a:dark:text-blue-400 prose-a:underline prose-a:decoration-2 prose-a:underline-offset-2 prose-a:hover:text-blue-700 prose-a:dark:hover:text-blue-300 prose-strong:text-[#111111] prose-strong:dark:text-gray-100 prose-code:text-[#111111] prose-code:dark:text-gray-100 prose-pre:bg-transparent prose-pre:p-0"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </article>

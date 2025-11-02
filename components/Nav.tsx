@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
 export default function Nav() {
   const navItems = [
@@ -14,20 +15,21 @@ export default function Nav() {
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="text-xl font-bold text-[#111111] dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
           >
             Jonathan Mares
           </Link>
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium"
+                className="text-sm sm:text-base text-[#1a1a1a] dark:text-gray-300 hover:text-[#111111] dark:hover:text-white transition-colors font-medium"
               >
                 {item.label}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
         </div>
       </div>
