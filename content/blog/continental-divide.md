@@ -17,6 +17,7 @@ Planning for this trip began months before. We deliberated for a long time wheth
 ![Entire Route](/blog-images/full_route.png)
 *After hauling our bikes from NY to Great Falls, MT, we began our 2,000+ mile journey towards the Mexican border. We ended the trip in Albuquerque, NM.*
 
+
 We didn't actually make it to the Mexican border because we ran out of time. We will have to do this next time! I hope you enjoy this writeup of our trips with pictures. Also, check out a video I prepared on Youtube [here](https://www.youtube.com/watch?v=ajMygbRiZcQ)!
 
 
@@ -45,6 +46,8 @@ We woke up and left Toledo. Today we drove from 9AM till about midnight, includi
 <br/>
 
 ![Day 3](/blog-images/day_3.png)
+
+
 
 Another full day of driving. We made it to Great Falls late, around 10PM. What a relief to finish 33 hours of driving! We slipped into the hot tub at our hotel to decompress which felt great.
 
@@ -87,7 +90,7 @@ We ended the day at a nice bed and breakfast that we found by chance called the 
 
 # Day 6 - Flathead Lake to Helena
 
-![Day 6](./day_.png)
+![Day 6](/blog-images/day_6.png)
 
 We woke up early and had breakfast at 8. It was great. We left Swan lake around 9 towards Helena, where we hoped to finish today. We took a few roads to quicken the pace, but made it to Helena around 6pm. Today we had a good amount of riding in the back country, and we were pretty worried about bears. We had an extremely abbreviated lunch break which was stopped by a sound that I thought was a bear, which turned out to be car. We were still riding with some fear of bears, so we packed up our lunch rapidly and continued to make progress.  Nice Montana countryside and scenery.
 
@@ -114,7 +117,7 @@ Frustratingly, I lost my musician's earplugs. They fell out of my tank bag someh
 
 Tonight we camped at a KOA in Dillon, Montana. The location wasn't nicest, but it was right in front of a stream which made for some great background noise.
 
-![Dad Inspecting](./dad_inspecting.jpg)
+![Dad Inspecting](/blog-images/dad_inspecting.jpg)
 *Dad inspects the rest of the trail. It's hard to capture how steep this slope is*
 
 More photos from today:
@@ -190,10 +193,10 @@ This morning we crossed Union Pass. It was also cold in the morning, definetly b
 
  The trail was a good mix of on road and off road riding that wasn't too difficult. We had lunch in Pinedale, Wyoming. We then began crossing the Great Basin Desert. We were both to find a huge desert in the middle of Wyoming, and it was quite desolate. There was hardly any evidence of civilization for miles. We came across a very small city called Atlantic City with a population of about 75 where we decided to sleep as the next city/settlement was hours away. At the outskirts of the city we passed 2 young french guys on bicycles who had been riding the Continental Divide from Banff. We planned on pitching tents with them on a guy's property (he generously offered us his front yard) but we miraculously found a woman who had an architecture office in her home in Atlantic City and rented out her top floor as a cabin. What a find!
 
-![Entering the Great Basin Desert](./wyoming_together.jpg)
+![Entering the Great Basin Desert](/blog-images/wyoming_together.jpg)
 *Entering the Great Basin Desert in Wyoming*
 
-![Eating Dinner in the Cabin](./atlantic_city_cabin.jpg)
+![Eating Dinner in the Cabin](/blog-images/atlantic_city_cabin.jpg)
 *Eating dinner in an architect's small cabin*
 
 # Day 13 - Atlantic City to Steamboat, CO
@@ -264,7 +267,7 @@ Some more photos from today:
 ![Making Coffee](/blog-images/making_coffee.jpg)
 *Stopping for some coffee*
 
-![Southern Colorado Together](./southern_colorado_together.jpg)
+![Southern Colorado Together](/blog-images/southern_colorado_together.jpg)
 *Riding through the Rio Grande National Forest in southern Colorado*
 
 
@@ -280,7 +283,7 @@ Today was had a few hours of riding before riding into Sante Fe, New Mexico. We 
 
 Last day of the trip! The bikes are stored in the storage unit for me to pick up in a few weeks with the truck on the way home. Dad flies home, and I fly back to Great Falls, MT to start the next phase of my trip on my own!
 
-![End of the Trip](./end.jpg)
+![End of the Trip](/blog-images/end.jpg)
 
 ![Traveling Back to my car](/blog-images/day_21.png)
 *Flying back to snowy Great Falls to pick up my truck*
@@ -302,8 +305,8 @@ Enjoy some more photos from the trip!
 ![Dad Mud](/blog-images/dad-mud-1.jpg)
 *Picking the bike back up in deep mud*
 
-![Cool Rock](./cool_rock.jpg)
+![Cool Rock](/blog-images/cool_rock.jpg)
 *Somewhere in New Mexico*
 
-![Nice View](./nice_view_montana_jonathan_eyal.jpg)
+![Nice View](/blog-images/nice_view_montana_jonathan_eyal.jpg)
 *Nice view in Montana*
