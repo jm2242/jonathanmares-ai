@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
@@ -32,9 +33,17 @@ export default function Nav() {
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-lg sm:text-xl font-bold text-[#111111] dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
+            aria-label="Home"
           >
-            Jonathan Mares
+            <Image
+              src="/logo.png"
+              alt="J"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+              priority
+            />
           </Link>
           
           {/* Desktop Navigation */}

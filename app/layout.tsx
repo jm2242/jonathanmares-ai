@@ -23,6 +23,10 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: "Jonathan Mares - Personal Website",
   description: "Personal website and blog by Jonathan Mares. Writing about computer science, software engineering, and motorcycles.",
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({
