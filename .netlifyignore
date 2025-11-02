@@ -1,0 +1,9 @@
+# Exclude documentation files from secrets scanning
+*.md
+# Exclude board setup documentation
+BOARD_SETUP.md
+GITHUB_OAUTH_SETUP.md
+GISCUS_SETUP.md
+BOARD_ARCHITECTURE.md
+NETLIFY_SECRETS_SCANNING.md
+

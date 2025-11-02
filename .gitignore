@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify build output (contains public env vars - this is expected)
+.netlify
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
