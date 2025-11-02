@@ -57,6 +57,16 @@ body:not(.dark) {
   color: #1a1a1a !important;
 }
 
+/* Ensure form labels are black in light mode */
+:not(.dark) label {
+  color: #000000 !important;
+}
+
+/* Ensure form labels are light in dark mode */
+.dark label {
+  color: #d1d5db !important;
+}
+
 /* Dark mode text colors - ensure all text is light and readable */
 .dark {
   color: #e5e7eb !important; /* Light gray for body text */
@@ -375,5 +385,28 @@ pre[class*="language-"] code {
 /* But remove extra top margin between adjacent paragraphs */
 .prose p + p {
   margin-top: 0 !important;
+}
+
+/* Form input styling - ensure light backgrounds in light mode only */
+html:not(.dark) input[type="text"],
+html:not(.dark) input[type="email"],
+html:not(.dark) input[type="tel"],
+html:not(.dark) textarea {
+  background-color: #fafafa !important;
+  color: #111111 !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Ensure dark mode inputs stay dark */
+html.dark input[type="text"],
+html.dark input[type="email"],
+html.dark input[type="tel"],
+html.dark textarea {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
 }
 
