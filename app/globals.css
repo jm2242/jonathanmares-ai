@@ -611,3 +611,45 @@ html:not(.dark) .bg-red-50 {
   --color-btn-primary-text: #ffffff;
 }
 
+/* Board Post Cards - Light Mode Styling (off-white background like blog posts) */
+html:not(.dark) .board-post-card {
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  color: #111111 !important;
+}
+
+html:not(.dark) .board-post-card h3 {
+  color: #111111 !important;
+}
+
+html:not(.dark) .board-post-card > div:last-child > div:nth-of-type(2) {
+  color: #111111 !important;
+}
+
+/* Force post content text to be dark in light mode */
+html:not(.dark) .board-post-card .post-content,
+html:not(.dark) .board-post-card > div:last-child > div.post-content {
+  color: #111111 !important;
+}
+
+/* Ensure all text inside post content is dark */
+html:not(.dark) .board-post-card .post-content,
+html:not(.dark) .board-post-card .post-content * {
+  color: #111111 !important;
+}
+
+html:not(.dark) .board-post-card > div:last-child > div:last-child {
+  color: #6b7280 !important;
+}
+
+html:not(.dark) .board-post-card > div:last-child > div:last-child span,
+html:not(.dark) .board-post-card > div:last-child > div:last-child time {
+  color: #6b7280 !important;
+}
+
+/* Create Post Form - Light Mode (off-white to match) */
+html:not(.dark) .create-post-form {
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+}
+

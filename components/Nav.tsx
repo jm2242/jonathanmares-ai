@@ -13,6 +13,7 @@ export default function Nav() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/blog', label: 'Blog' },
+    { href: '/board', label: 'Board' },
     { href: '/contact', label: 'Contact' },
   ];
 
