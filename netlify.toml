@@ -7,6 +7,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Tell secrets scanner to ignore NEXT_PUBLIC_* variables (they're intentionally public)
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_GISCUS_REPO,NEXT_PUBLIC_GISCUS_REPO_ID,NEXT_PUBLIC_GISCUS_CATEGORY,NEXT_PUBLIC_GISCUS_CATEGORY_ID"
 
 # Cache control headers to prevent stale content after domain switch
 [[headers]]
