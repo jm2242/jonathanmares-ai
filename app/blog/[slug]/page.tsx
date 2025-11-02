@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPostSlugs, getPostData } from '@/lib/blog';
+import Comments from '@/components/Comments';
 
 export async function generateStaticParams() {
   const posts = getAllPostSlugs();
@@ -52,6 +53,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-[#111111] prose-headings:dark:text-gray-100 prose-h2:text-2xl prose-h2:font-semibold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:text-[#1a1a1a] prose-p:dark:text-gray-300 prose-a:text-blue-600 prose-a:dark:text-blue-400 prose-a:underline prose-a:decoration-2 prose-a:underline-offset-2 prose-a:hover:text-blue-700 prose-a:dark:hover:text-blue-300 prose-strong:text-[#111111] prose-strong:dark:text-gray-100 prose-code:text-[#111111] prose-code:dark:text-gray-100 prose-pre:bg-transparent prose-pre:p-0"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+
+      <Comments slug={slug} title={post.title} />
     </article>
   );
 }

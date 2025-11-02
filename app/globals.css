@@ -419,3 +419,195 @@ html:not(.dark) .bg-red-50 {
   font-family: var(--font-body), 'Source Sans Pro', 'Source Sans 3', sans-serif !important;
 }
 
+/* Giscus Comments Light Mode Customization */
+:not(.dark) .giscus,
+:not(.dark) .giscus-frame {
+  color-scheme: light;
+}
+
+/* Customize Giscus colors to match site theme in light mode */
+:not(.dark) .giscus-frame {
+  /* Override Giscus light mode colors */
+  --color-prettylights-syntax-comment: #6e7781;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-syntax-string-regexp: #116329;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-italic: #24292f;
+  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #116329;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #953800;
+  --color-prettylights-syntax-markup-changed-bg: #ffc67d;
+  --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+  --color-btn-text: #24292f;
+  --color-btn-bg: #f6f8fa;
+  --color-btn-border: rgba(31, 35, 40, 0.15);
+  --color-btn-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --color-btn-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-hover-border: rgba(31, 35, 40, 0.15);
+  --color-btn-active-bg: hsla(220, 14%, 96%, 1);
+  --color-btn-active-border: rgba(31, 35, 40, 0.15);
+  --color-btn-selected-bg: hsla(220, 14%, 94%, 1);
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #2da44e;
+  --color-btn-primary-border: rgba(31, 35, 40, 0.15);
+  --color-btn-primary-shadow: 0 1px 0 rgba(31, 35, 40, 0.1);
+  --color-btn-primary-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --color-btn-primary-hover-bg: #2c974b;
+  --color-btn-primary-hover-border: rgba(31, 35, 40, 0.15);
+  --color-btn-primary-selected-bg: hsla(137, 55%, 36%, 1);
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.8);
+  --color-btn-primary-disabled-bg: #94d3a2;
+  --color-btn-primary-disabled-border: rgba(31, 35, 40, 0.15);
+  --color-action-list-item-default-hover-bg: rgba(208, 215, 222, 0.32);
+  --color-segmented-control-bg: #eaeef2;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-active-border: rgba(31, 35, 40, 0.15);
+  --color-segmented-control-button-checked-bg: #ffffff;
+  --color-fg-default: #1f2328;
+  --color-fg-muted: #656d76;
+  --color-fg-subtle: #8b949e;
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #f6f8fa;
+  --color-canvas-subtle: #f6f8fa;
+  --color-border-default: #d1d9e0;
+  --color-border-muted: #d8dee4;
+  --color-border-subtle: rgba(31, 35, 40, 0.08);
+  --color-shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --color-shadow-medium: 0 3px 6px rgba(31, 35, 40, 0.15);
+  --color-shadow-large: 0 8px 24px rgba(31, 35, 40, 0.2);
+  --color-shadow-extra-large: 0 12px 48px rgba(31, 35, 40, 0.3);
+  --color-primer-shadow-focus: 0 0 0 3px rgba(9, 105, 218, 0.3);
+  --color-primer-shadow-inset: inset 0 1px 0 rgba(31, 35, 40, 0.06);
+  --color-scale-gray-1: #f6f8fa;
+  --color-scale-gray-2: #eaeef2;
+  --color-scale-gray-3: #d0d7de;
+  --color-scale-gray-4: #afb8c1;
+  --color-scale-gray-5: #8b949e;
+  --color-scale-gray-6: #656d76;
+  --color-scale-gray-7: #525960;
+  --color-scale-gray-8: #32383f;
+  --color-scale-gray-9: #24292f;
+  --color-scale-blue-1: #ddf4ff;
+  --color-scale-blue-2: #b6e3ff;
+  --color-scale-blue-3: #80ccff;
+  --color-scale-blue-4: #54aeff;
+  --color-scale-blue-5: #218bff;
+  --color-scale-blue-6: #0969da;
+  --color-scale-blue-7: #0550ae;
+  --color-scale-blue-8: #033d8b;
+  --color-scale-blue-9: #0a3069;
+  --color-scale-green-1: #dafbe1;
+  --color-scale-green-2: #aceebb;
+  --color-scale-green-3: #6fdd8b;
+  --color-scale-green-4: #4ac26b;
+  --color-scale-green-5: #2da44e;
+  --color-scale-green-6: #1a7f37;
+  --color-scale-green-7: #116329;
+  --color-scale-green-8: #044f1e;
+  --color-scale-green-9: #003d16;
+  --color-scale-yellow-1: #fff8c5;
+  --color-scale-yellow-2: #fae17d;
+  --color-scale-yellow-3: #eac54f;
+  --color-scale-yellow-4: #d4a72c;
+  --color-scale-yellow-5: #bf8700;
+  --color-scale-yellow-6: #9a6700;
+  --color-scale-yellow-7: #7d4e00;
+  --color-scale-yellow-8: #633c01;
+  --color-scale-yellow-9: #4d2d00;
+  --color-scale-red-1: #ffebe9;
+  --color-scale-red-2: #ffcecb;
+  --color-scale-red-3: #ffaba8;
+  --color-scale-red-4: #ff8182;
+  --color-scale-red-5: #fa4549;
+  --color-scale-red-6: #cf222e;
+  --color-scale-red-7: #a40e26;
+  --color-scale-red-8: #82071e;
+  --color-scale-red-9: #660018;
+  --color-scale-purple-1: #fbefff;
+  --color-scale-purple-2: #ecd8ff;
+  --color-scale-purple-3: #d8b9ff;
+  --color-scale-purple-4: #c297ff;
+  --color-scale-purple-5: #a475f9;
+  --color-scale-purple-6: #8250df;
+  --color-scale-purple-7: #6639ba;
+  --color-scale-purple-8: #512a97;
+  --color-scale-purple-9: #3e1f6c;
+  --color-scale-orange-1: #fff1e5;
+  --color-scale-orange-2: #ffd8b5;
+  --color-scale-orange-3: #ffb77c;
+  --color-scale-orange-4: #fb8f44;
+  --color-scale-orange-5: #e16f24;
+  --color-scale-orange-6: #bf4e00;
+  --color-scale-orange-7: #9a3f00;
+  --color-scale-orange-8: #782e00;
+  --color-scale-orange-9: #5d2400;
+}
+
+/* Giscus light mode - cleaner white/gray theme matching site */
+:not(.dark) .giscus-frame {
+  /* Use a cleaner, softer color palette matching the site */
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #f9fafb;
+  --color-canvas-subtle: #f5f5f5;
+  --color-fg-default: #111111;
+  --color-fg-muted: #656d76;
+  --color-fg-subtle: #8b949e;
+  --color-border-default: #e5e7eb;
+  --color-border-muted: #d1d5db;
+  --color-border-subtle: rgba(31, 35, 40, 0.08);
+  --color-btn-bg: #f9fafb;
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-primary-bg: #2563eb;
+  --color-btn-primary-hover-bg: #1d4ed8;
+}
+
+/* Giscus dark mode customization */
+.dark .giscus,
+.dark .giscus-frame {
+  color-scheme: dark;
+}
+
+/* Giscus dark mode - darker theme matching site */
+.dark .giscus-frame {
+  /* Use a darker color palette matching the site's dark mode */
+  --color-canvas-default: #0a0a0a;
+  --color-canvas-overlay: #161b22;
+  --color-canvas-inset: #0d1117;
+  --color-canvas-subtle: #161b22;
+  --color-fg-default: #e5e7eb;
+  --color-fg-muted: #d1d5db;
+  --color-fg-subtle: #9ca3af;
+  --color-border-default: #374151;
+  --color-border-muted: #4b5563;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  --color-btn-bg: #1f2937;
+  --color-btn-hover-bg: #374151;
+  --color-btn-primary-bg: #3b82f6;
+  --color-btn-primary-hover-bg: #2563eb;
+  --color-btn-text: #f3f4f6;
+  --color-btn-primary-text: #ffffff;
+}
+
