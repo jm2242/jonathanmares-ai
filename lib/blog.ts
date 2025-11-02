@@ -18,6 +18,7 @@ export interface BlogPost {
   content: string;
   readingTime?: string;
   draft?: boolean;
+  tags?: string[];
 }
 
 export function getSortedPostsData(): Omit<BlogPost, 'content'>[] {
@@ -42,7 +43,7 @@ export function getSortedPostsData(): Omit<BlogPost, 'content'>[] {
       // Combine the data with the slug
       return {
         slug,
-        ...(data as { title: string; date: string; excerpt?: string; draft?: boolean }),
+        ...(data as { title: string; date: string; excerpt?: string; draft?: boolean; tags?: string[] }),
       };
     })
     .filter((post) => !post.draft); // Filter out draft posts
