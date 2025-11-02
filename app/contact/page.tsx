@@ -111,10 +111,10 @@ export default function Contact() {
 
           {message && (
             <div
-              className={`p-4 rounded-md ${
+              className={`p-4 rounded-md border ${
                 status === 'success'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-                  : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
+                  ? 'bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-black dark:text-green-300'
+                  : 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-black dark:text-red-300'
               }`}
             >
               {message}

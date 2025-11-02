@@ -11,7 +11,7 @@ export default function Home() {
           Welcome to my Blog and Personal Website
         </h1>
         <p className="text-xl text-[#1a1a1a] dark:text-gray-300 leading-relaxed max-w-2xl">
-          Here I write about computer science, software engineering, and motorcycles.
+          Here I write about computer science, software engineering, motorcycles, and music.
         </p>
       </section>
 

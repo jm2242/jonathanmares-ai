@@ -394,6 +394,7 @@ html:not(.dark) input[type="tel"],
 html:not(.dark) textarea {
   background-color: #fafafa !important;
   color: #111111 !important;
+  font-family: var(--font-body), 'Source Sans Pro', 'Source Sans 3', sans-serif !important;
 }
 
 html:not(.dark) input::placeholder,
@@ -408,5 +409,13 @@ html.dark input[type="tel"],
 html.dark textarea {
   background-color: #1f2937 !important;
   color: #f9fafb !important;
+  font-family: var(--font-body), 'Source Sans Pro', 'Source Sans 3', sans-serif !important;
+}
+
+/* Force black text for success/error messages in light mode */
+html:not(.dark) .bg-green-50,
+html:not(.dark) .bg-red-50 {
+  color: #000000 !important;
+  font-family: var(--font-body), 'Source Sans Pro', 'Source Sans 3', sans-serif !important;
 }
 
