@@ -1,4 +1,4 @@
-import { auth, signIn } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { supabaseAdmin } from "@/lib/supabase-server";
 import PostCard from "@/components/PostCard";
 import CreatePostForm from "@/components/CreatePostForm";
@@ -35,14 +35,16 @@ async function getPosts(sessionUserId?: string): Promise<Post[]> {
 
 export default async function Board() {
   const session = await auth();
-  const posts = await getPosts(session?.user?.id);
+  // Only consider it a valid session if it has a user with an id
+  const isAuthenticated = session?.user?.id;
+  const posts = await getPosts(isAuthenticated);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h1 className="text-4xl font-bold mb-8 text-[#111111] dark:text-gray-100">Board</h1>
 
       {/* Sign in prompt for unauthenticated users */}
-      {!session && (
+      {!isAuthenticated && (
         <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
           <p className="text-blue-700 dark:text-blue-300 mb-3">
             Sign in with GitHub to create posts and upvote.
@@ -64,7 +66,7 @@ export default async function Board() {
       )}
 
       {/* Create Post Form (only for authenticated users) */}
-      {session && <CreatePostForm />}
+      {isAuthenticated && <CreatePostForm />}
 
       {/* Posts List */}
       <div className="space-y-4">
@@ -77,7 +79,25 @@ export default async function Board() {
           posts.map((post) => <PostCard key={post.id} post={post} />)
         )}
       </div>
+
+      {/* Sign Out Button */}
+      {isAuthenticated && (
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <form
+            action={async () => {
+              "use server";
+              await signOut();
+            }}
+          >
+            <button
+              type="submit"
+              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              Sign Out
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
-
