@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeStringify from 'rehype-stringify';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -71,8 +74,13 @@ export async function getPostData(slug: string): Promise<BlogPost> {
   // Use gray-matter to parse the post metadata section
   const { data, content } = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark().use(html).process(content);
+  // Use remark to convert markdown into HTML string with syntax highlighting
+  const processedContent = await remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypePrismPlus)
+    .use(rehypeStringify)
+    .process(content);
   const contentHtml = processedContent.toString();
 
   // Calculate reading time (average 200 words per minute)

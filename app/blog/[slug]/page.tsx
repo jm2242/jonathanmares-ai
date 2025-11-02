@@ -9,10 +9,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let post;
   try {
-    post = await getPostData(params.slug);
+    post = await getPostData(slug);
   } catch (error) {
     notFound();
   }
@@ -48,7 +49,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       </header>
 
       <div
-        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 prose-headings:dark:text-gray-100 prose-p:text-gray-700 prose-p:dark:text-gray-300 prose-a:text-blue-600 prose-a:dark:text-blue-400 prose-strong:text-gray-900 prose-strong:dark:text-gray-100 prose-code:text-gray-900 prose-code:dark:text-gray-100"
+        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 prose-headings:dark:text-gray-100 prose-p:text-gray-700 prose-p:dark:text-gray-300 prose-a:text-blue-600 prose-a:dark:text-blue-400 prose-strong:text-gray-900 prose-strong:dark:text-gray-100 prose-code:text-gray-900 prose-code:dark:text-gray-100 prose-pre:bg-transparent prose-pre:p-0"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </article>

@@ -1,25 +1,20 @@
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">About</h1>
+      <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">About Me</h1>
       
       <div className="prose prose-lg dark:prose-invert max-w-none">
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-          Hello! I'm Jonathan Mares, and this is my personal website where I write about the things I'm passionate about.
+          Hi! I'm Jonathan Mares. I'm currently based out of the East Bay in Northern California and am an engineering manager at <a href="https://www.quorum.us/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Quorum</a>.
         </p>
         
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-          I'm interested in computer science, software engineering, and motorcycles. When I'm not coding or writing, 
-          you can find me exploring the backroads on two wheels or tinkering with new projects.
+          Originally from Be'er Sheva, Israel, I grew up in New York and spent my college years at Cornell, studying Chemical Engineering and Computer Science. In my free time, I enjoy playing classical and jazz piano, soccer, mountain biking, motorcycles, and pretending to understand wine.
         </p>
         
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">Interests</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-          <li>Software Engineering & Architecture</li>
-          <li>Computer Science</li>
-          <li>Adventure Motorcycling</li>
-          <li>Open Source Software</li>
-        </ul>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+          If you'd like to reach me, you can write to me at <a href="mailto:jmares93@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">jmares93@gmail.com</a>.
+        </p>
       </div>
     </div>
   );
