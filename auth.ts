@@ -6,6 +6,7 @@ const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 const authSecret = process.env.AUTH_SECRET;
 const nextAuthUrl = process.env.NEXTAUTH_URL;
+const trustHost = process.env.AUTH_TRUST_HOST;
 
 // Log environment variable status (only in development or if missing)
 if (process.env.NODE_ENV === "development") {
@@ -37,6 +38,14 @@ if (!authSecret) {
 if (!nextAuthUrl) {
   console.warn(
     "[NextAuth] NEXTAUTH_URL not set. NextAuth will try to auto-detect, but this may fail in production."
+  );
+}
+
+// In NextAuth v5, AUTH_TRUST_HOST=true is required in production to trust the hostname
+// Alternative: Set NEXTAUTH_URL exactly to your production domain
+if (!trustHost && !nextAuthUrl && process.env.NODE_ENV === "production") {
+  console.warn(
+    "[NextAuth] In production, either set AUTH_TRUST_HOST=true or NEXTAUTH_URL=https://jonathanmares.com"
   );
 }
 
