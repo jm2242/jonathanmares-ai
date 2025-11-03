@@ -1,33 +1,50 @@
-import NextAuth from 'next-auth';
-import GitHub from 'next-auth/providers/github';
+import NextAuth from "next-auth";
+import GitHub from "next-auth/providers/github";
 
-// Validate required environment variables
+// Get environment variables
 const githubClientId = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 const authSecret = process.env.AUTH_SECRET;
 const nextAuthUrl = process.env.NEXTAUTH_URL;
 
+// Log environment variable status (only in development or if missing)
+if (process.env.NODE_ENV === "development") {
+  console.log("NextAuth Environment Variables:");
+  console.log("GITHUB_CLIENT_ID:", githubClientId ? "✓ Set" : "✗ Missing");
+  console.log("GITHUB_CLIENT_SECRET:", githubClientSecret ? "✓ Set" : "✗ Missing");
+  console.log("AUTH_SECRET:", authSecret ? "✓ Set" : "✗ Missing");
+  console.log("NEXTAUTH_URL:", nextAuthUrl || "Not set (will use auto-detection)");
+}
+
+// Warn about missing variables but don't throw - let NextAuth handle validation
+// Throwing at module load time prevents the app from loading in production
 if (!githubClientId || !githubClientSecret) {
-  console.error('Missing GitHub OAuth credentials:');
-  console.error('GITHUB_CLIENT_ID:', githubClientId ? 'Set' : 'Missing');
-  console.error('GITHUB_CLIENT_SECRET:', githubClientSecret ? 'Set' : 'Missing');
-  throw new Error('Missing GitHub OAuth environment variables');
+  console.error(
+    "[NextAuth] Missing GitHub OAuth credentials. Sign-in will fail.",
+    "\n  GITHUB_CLIENT_ID:",
+    githubClientId ? "Set" : "Missing",
+    "\n  GITHUB_CLIENT_SECRET:",
+    githubClientSecret ? "Set" : "Missing"
+  );
 }
 
 if (!authSecret) {
-  console.error('Missing AUTH_SECRET - NextAuth requires this for session encryption');
-  throw new Error('Missing AUTH_SECRET environment variable');
+  console.error(
+    "[NextAuth] Missing AUTH_SECRET. Session encryption will fail. Generate with: openssl rand -base64 32"
+  );
 }
 
 if (!nextAuthUrl) {
-  console.warn('Missing NEXTAUTH_URL - NextAuth may not work correctly');
+  console.warn(
+    "[NextAuth] NEXTAUTH_URL not set. NextAuth will try to auto-detect, but this may fail in production."
+  );
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
-      clientId: githubClientId,
-      clientSecret: githubClientSecret,
+      clientId: githubClientId || "",
+      clientSecret: githubClientSecret || "",
     }),
   ],
   callbacks: {
@@ -50,7 +67,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
   pages: {
-    signIn: '/board',
+    signIn: "/board",
   },
 });
-
