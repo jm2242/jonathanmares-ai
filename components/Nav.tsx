@@ -9,6 +9,8 @@ import ThemeToggle from './ThemeToggle';
 export default function Nav() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const resumeUrl =
+    'https://drive.google.com/file/d/1n4NOrGvFZaHR9BpKBeNpOYhtouBZwYna/view?usp=sharing';
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
@@ -66,6 +68,15 @@ export default function Nav() {
               );
             })}
             <div className="flex items-center gap-3 ml-2 border-l border-gray-300 dark:border-gray-700 pl-4">
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md bg-blue-600 text-white text-sm lg:text-base font-semibold px-4 py-1.5 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                aria-label="View resume"
+              >
+                Resume
+              </a>
               <a
                 href="https://www.instagram.com/therealjonathanmares"
                 target="_blank"
@@ -171,7 +182,17 @@ export default function Nav() {
                   </Link>
                 );
               })}
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-800 mt-2">
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleLinkClick}
+                className="mt-4 inline-flex w-full items-center justify-center rounded-md bg-blue-600 text-white text-base font-semibold px-4 py-2 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                aria-label="View resume"
+              >
+                Resume
+              </a>
+              <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
                 <a
                   href="https://www.instagram.com/therealjonathanmares"
                   target="_blank"

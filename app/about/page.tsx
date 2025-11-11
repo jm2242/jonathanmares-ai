@@ -23,19 +23,6 @@ export default function About() {
         </p>
 
         <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
-          Previously, I was an engineering manager at{" "}
-          <a
-            href="https://www.quorum.us/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            Quorum
-          </a>
-          .
-        </p>
-
-        <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
           Originally from Be'er Sheva, Israel, I grew up in New York and spent my college years at
           Cornell, studying Chemical Engineering and Computer Science. In my free time, I enjoy
           playing classical and jazz piano, soccer, mountain biking, motorcycles, and pretending to
@@ -58,6 +45,19 @@ export default function About() {
             Youtube
           </a>{" "}
           pages.
+        </p>
+
+        <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
+          Previously, I was an engineering manager at{" "}
+          <a
+            href="https://www.quorum.us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            Quorum
+          </a>
+          .
         </p>
 
         <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
