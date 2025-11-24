@@ -24,6 +24,27 @@ export const metadata: Metadata = {
   title: "Jonathan Mares - Personal Website",
   description:
     "Personal website and blog by Jonathan Mares. Writing about computer science, software engineering, and motorcycles.",
+  openGraph: {
+    title: "Jonathan Mares - Personal Website",
+    description:
+      "Personal website and blog by Jonathan Mares. Writing about computer science, software engineering, and motorcycles.",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "Jonathan Mares",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Jonathan Mares - Personal Website",
+    description:
+      "Personal website and blog by Jonathan Mares. Writing about computer science, software engineering, and motorcycles.",
+    images: ["/logo.png"],
+  },
   // Next.js automatically uses app/icon.png as the favicon
   // No need to specify it in metadata for it to work
 };
