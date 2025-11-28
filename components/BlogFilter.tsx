@@ -43,7 +43,7 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
         <span className="text-sm font-semibold text-[#111111] dark:text-gray-300 mr-2">Filter by tag:</span>
         <button
           onClick={() => handleTagClick(null)}
-          className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+          className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
             !selectedTag
               ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
               : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
@@ -55,7 +55,7 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
           <button
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+            className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
               selectedTag === tag
                 ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
                 : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'

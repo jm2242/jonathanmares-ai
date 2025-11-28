@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { getSortedPostsData } from '@/lib/blog';
+import Link from "next/link";
+import { getSortedPostsData } from "@/lib/blog";
 
 export default function Home() {
   const posts = getSortedPostsData().slice(0, 5); // Show latest 5 posts
@@ -8,9 +8,9 @@ export default function Home() {
     <div className="max-w-4xl mx-auto px-6 py-12">
       <section className="mb-16">
         <h1 className="text-5xl font-bold mb-6 text-[#111111] dark:text-gray-100">
-          Welcome to my Blog and Personal Website
+          Jonathan Mares
         </h1>
-        <p className="text-xl text-[#1a1a1a] dark:text-gray-300 leading-relaxed max-w-2xl">
+        <p className="text-xl text-[#1a1a1a] dark:text-gray-300 leading-relaxed">
           Here I write about computer science, software engineering, motorcycles, and music.
         </p>
       </section>
@@ -28,9 +28,7 @@ export default function Home() {
 
         {posts.length === 0 ? (
           <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-8 text-center border border-gray-200 dark:border-gray-800">
-            <p className="text-gray-600 dark:text-gray-400">
-              No blog posts yet. Check back soon!
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">No blog posts yet. Check back soon!</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -45,17 +43,15 @@ export default function Home() {
                 </h3>
                 <div className="flex items-center gap-4 text-sm text-[#374151] dark:text-gray-400 mb-2">
                   <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </time>
                 </div>
                 {post.excerpt && (
-                  <p className="text-[#1a1a1a] dark:text-gray-300 mt-2">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-[#1a1a1a] dark:text-gray-300 mt-2">{post.excerpt}</p>
                 )}
               </Link>
             ))}
