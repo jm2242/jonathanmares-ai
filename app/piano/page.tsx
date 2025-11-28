@@ -19,6 +19,12 @@ const classicalRecordings: Recording[] = [
     recordingDate: "07/25",
     url: "https://www.youtube.com/watch?v=EMTg8d6Xvcw",
   },
+  {
+    title: "Ballade in G Minor Op. 23",
+    composer: "Chopin",
+    recordingDate: "10/2010",
+    url: "https://www.youtube.com/watch?v=Dl8PmHgD2qM",
+  },
 ];
 
 const jazzRecordings: Recording[] = [];
@@ -35,7 +41,10 @@ export default function Piano() {
         <div className="overflow-x-auto">
           <div className="min-w-[600px]">
             {/* Header */}
-            <div className="grid grid-cols-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-t-lg">
+            <div
+              className="grid bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-t-lg"
+              style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}
+            >
               <div className="py-3 px-4 font-semibold text-[#111111] dark:text-gray-100 border-r border-gray-200 dark:border-gray-700 last:border-r-0">
                 Name
               </div>
@@ -54,9 +63,10 @@ export default function Piano() {
             {recordings.map((recording, index) => (
               <div
                 key={index}
-                className={`piano-recording-row grid grid-cols-4 bg-[#f9fafb] dark:bg-gray-900 border-l border-r border-gray-200 dark:border-gray-800 ${
+                className={`piano-recording-row grid bg-[#f9fafb] dark:bg-gray-900 border-l border-r border-gray-200 dark:border-gray-800 ${
                   index === recordings.length - 1 ? "rounded-b-lg border-b" : "border-b"
                 } hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors`}
+                style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}
               >
                 <div className="py-4 px-4 text-[#111111] dark:text-gray-300 border-r border-gray-200 dark:border-gray-700 last:border-r-0">
                   <div className="flex items-center gap-2">
