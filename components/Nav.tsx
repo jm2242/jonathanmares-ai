@@ -10,7 +10,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const resumeUrl =
-    "https://drive.google.com/file/d/1n4NOrGvFZaHR9BpKBeNpOYhtouBZwYna/view?usp=sharing";
+    "https://drive.google.com/file/d/1GsW0pngHX0HsF6P0DnPwiEsz8__MqlWc/view?usp=sharing";
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
