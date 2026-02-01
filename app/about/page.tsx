@@ -7,8 +7,8 @@ export default function About() {
 
       <div className="mb-8">
         <Image
-          src="/images/about-photo.jpeg"
-          alt="Jonathan Mares in a gondola with snowy mountain background"
+          src="/images/cheese.jpg"
+          alt="Jonathan Mares"
           width={600}
           height={800}
           className="rounded-lg shadow-lg object-cover w-full max-w-md mx-auto"
