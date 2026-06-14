@@ -2,7 +2,8 @@ import Image from "next/image";
 
 const timeline = [
   {
-    label: "Tapestry",
+    label: "Google - Tapestry",
+    date: "2026 - Present",
     body: (
       <>
         Now focused on{" "}
@@ -20,10 +21,12 @@ const timeline = [
   },
   {
     label: "Google Wallet",
+    date: "2022-2026",
     body: "Spent about four years building products for Google Wallet at Google.",
   },
   {
     label: "Quorum",
+    date: "2017-2022",
     body: "Previously an engineering manager at Quorum before joining Google.",
   },
 ];
@@ -115,11 +118,16 @@ export default function About() {
             <section className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-sm">
               <h2 className="mb-5 text-2xl font-bold text-[var(--foreground)]">Work</h2>
               <div className="space-y-5">
-                {timeline.map(({ label, body }) => (
-                  <div key={label} className="grid grid-cols-[112px_1fr] gap-4">
-                    <span className="text-sm font-extrabold uppercase tracking-[0.08em] text-[var(--green)]">
-                      {label}
-                    </span>
+                {timeline.map(({ label, date, body }) => (
+                  <div key={label} className="grid gap-2 sm:grid-cols-[148px_1fr] sm:gap-4">
+                    <div>
+                      <span className="block text-sm font-extrabold uppercase tracking-[0.08em] text-[var(--green)]">
+                        {label}
+                      </span>
+                      <span className="mt-1 block text-sm font-bold text-[var(--muted)]">
+                        {date}
+                      </span>
+                    </div>
                     <p className="leading-7 text-[var(--muted)]">{body}</p>
                   </div>
                 ))}
