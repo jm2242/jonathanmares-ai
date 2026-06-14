@@ -2,15 +2,22 @@ import { Suspense } from "react";
 import { getSortedPostsData } from "@/lib/blog";
 import BlogFilter from "@/components/BlogFilter";
 import BlogPostList from "@/components/BlogPostList";
+import { getWritingInterestFilter, postMatchesWritingInterest } from "@/lib/writing-interests";
 
 interface BlogProps {
-  searchParams: Promise<{ tag?: string }>;
+  searchParams: Promise<{ interest?: string; tag?: string }>;
 }
 
 export default async function Blog({ searchParams }: BlogProps) {
-  const { tag } = await searchParams;
+  const { interest, tag } = await searchParams;
   const allPosts = getSortedPostsData();
-  const posts = tag ? allPosts.filter((post) => post.tags?.includes(tag)) : allPosts;
+  const selectedInterest = getWritingInterestFilter(interest);
+  const posts = selectedInterest
+    ? allPosts.filter((post) => postMatchesWritingInterest(post, selectedInterest))
+    : tag
+      ? allPosts.filter((post) => post.tags?.includes(tag))
+      : allPosts;
+  const emptyLabel = selectedInterest?.label ?? tag;
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
@@ -33,7 +40,9 @@ export default async function Blog({ searchParams }: BlogProps) {
       {posts.length === 0 ? (
         <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-8 text-center shadow-sm">
           <p className="text-[var(--muted)]">
-            {tag ? `No posts found with tag "${tag}".` : "No blog posts yet. Check back soon!"}
+            {emptyLabel
+              ? `No posts found for "${emptyLabel}".`
+              : "No blog posts yet. Check back soon!"}
           </p>
         </div>
       ) : (

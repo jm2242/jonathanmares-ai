@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Comments from "@/components/Comments";
 import { getAllPostSlugs, getPostData, getSortedPostsData } from "@/lib/blog";
+import { displayWritingCategory } from "@/lib/writing-interests";
 
 export async function generateStaticParams() {
   const posts = getAllPostSlugs();
@@ -24,7 +25,7 @@ function displayTag(tags?: string[]) {
   if (tags.includes("motorcycle")) return "Motorcycle / Travel Journal";
   if (tags.includes("piano")) return "Piano / Recordings";
   if (tags.some((tag) => ["tech", "software", "react"].includes(tag))) return "Software / Notes";
-  return tags[0];
+  return displayWritingCategory(tags);
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {

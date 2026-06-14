@@ -2,6 +2,7 @@
 title: Welcome to My New Website
 date: 2025-11-02
 excerpt: A fresh start with Next.js, TypeScript, and modern web technologies.
+tags: ["diy-projects"]
 ---
 
 Welcome to my newly redesigned website! I've rebuilt this one with Cursor to test out AI driven development. The original site is at jolly-knuth-183ee2.netlify.app.

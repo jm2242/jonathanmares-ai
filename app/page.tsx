@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getSortedPostsData } from "@/lib/blog";
+import { displayWritingCategory, writingInterestFilters } from "@/lib/writing-interests";
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -11,11 +12,7 @@ function formatDate(date: string) {
 }
 
 function displayTag(tags?: string[]) {
-  if (!tags?.length) return "Writing";
-  if (tags.includes("motorcycle")) return "Motorcycle";
-  if (tags.includes("piano")) return "Piano";
-  if (tags.some((tag) => ["tech", "software", "react"].includes(tag))) return "Software";
-  return tags[0];
+  return displayWritingCategory(tags);
 }
 
 export default function Home() {
@@ -157,26 +154,21 @@ export default function Home() {
           </div>
         )}
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {[
-            ["Engineering", "Keep the technical posts readable, dense, and syntax-friendly."],
-            [
-              "Motorcycles",
-              "Let trip photography carry more of the experience through bigger previews.",
-            ],
-            [
-              "Music",
-              "Turn the piano page from a plain table into an organized recording library.",
-            ],
-          ].map(([title, body]) => (
-            <div
-              key={title}
-              className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5 shadow-sm"
-            >
-              <h3 className="mb-2 text-lg font-bold text-[var(--green-dark)]">{title}</h3>
-              <p className="text-sm leading-6 text-[var(--muted)]">{body}</p>
-            </div>
-          ))}
+        <div className="mt-10">
+          <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--green)]">
+            Interests
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {writingInterestFilters.map((interest) => (
+              <Link
+                key={interest.value}
+                href={`/blog?interest=${interest.value}`}
+                className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-extrabold text-[var(--foreground)] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--green-dark)] dark:hover:border-[#53625d]"
+              >
+                {interest.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

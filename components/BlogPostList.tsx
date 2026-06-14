@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getSortedPostsData } from "@/lib/blog";
+import { displayWritingCategory } from "@/lib/writing-interests";
 
 interface BlogPostListProps {
   posts: ReturnType<typeof getSortedPostsData>;
@@ -15,11 +16,7 @@ function formatDate(date: string) {
 }
 
 function displayTag(tags?: string[]) {
-  if (!tags?.length) return "Writing";
-  if (tags.includes("motorcycle")) return "Motorcycle";
-  if (tags.includes("piano")) return "Piano";
-  if (tags.some((tag) => ["tech", "software", "react"].includes(tag))) return "Software";
-  return tags[0];
+  return displayWritingCategory(tags);
 }
 
 export default function BlogPostList({ posts }: BlogPostListProps) {
