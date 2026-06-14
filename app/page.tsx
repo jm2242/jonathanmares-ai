@@ -46,11 +46,6 @@ export default function Home() {
           <h1 className="font-serif-display max-w-3xl text-6xl leading-[0.95] text-white sm:text-7xl lg:text-8xl">
             Jonathan Mares
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#edf3ef] sm:text-xl">
-            I&apos;m a software engineer in the East Bay, building tools for complex systems, from
-            civic technology to Google Wallet to the future of the electric grid. This is where I
-            collect writing, projects, music, and notes from the road.
-          </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/blog"
