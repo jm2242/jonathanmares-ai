@@ -78,8 +78,8 @@ export default function About() {
               <p>
                 Originally from Be&apos;er Sheva, Israel, I grew up in New York and spent my college
                 years at Cornell, studying Chemical Engineering and Computer Science. In my free
-                time, I enjoy playing classical and jazz piano, soccer, mountain biking,
-                motorcycles, and pretending to understand wine. You can find my recordings and
+                time, I enjoy playing classical and jazz piano, mountain biking, motorcycles, and
+                pretending to understand wine. You can find my recordings and
                 performances on my{" "}
                 <a
                   href="https://www.instagram.com/therealjonathanmares"
