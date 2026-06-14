@@ -11,7 +11,8 @@ export default function Comments({ slug, title }: CommentsProps) {
   const commentsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!commentsRef.current) return;
+    const commentsElement = commentsRef.current;
+    if (!commentsElement) return;
 
     // Giscus configuration - values from environment variables
     const repo = process.env.NEXT_PUBLIC_GISCUS_REPO;
@@ -21,7 +22,7 @@ export default function Comments({ slug, title }: CommentsProps) {
 
     // Check if Giscus is configured
     if (!repo || !repoId || !categoryId) {
-      commentsRef.current.innerHTML = `
+      commentsElement.innerHTML = `
         <div class="text-center py-8 text-gray-500 dark:text-gray-400">
           <p>Comments are not configured. Please set up Giscus environment variables.</p>
           <p class="text-sm mt-2">Create a .env.local file with your Giscus configuration.</p>
@@ -36,7 +37,7 @@ export default function Comments({ slug, title }: CommentsProps) {
     };
 
     // Clear any existing content
-    commentsRef.current.innerHTML = "";
+    commentsElement.innerHTML = "";
 
     // Create script element
     const script = document.createElement("script");
@@ -56,13 +57,11 @@ export default function Comments({ slug, title }: CommentsProps) {
     script.setAttribute("crossorigin", "anonymous");
     script.async = true;
 
-    commentsRef.current.appendChild(script);
+    commentsElement.appendChild(script);
 
     // Cleanup function
     return () => {
-      if (commentsRef.current) {
-        commentsRef.current.innerHTML = "";
-      }
+      commentsElement.innerHTML = "";
     };
   }, [slug, title]);
 

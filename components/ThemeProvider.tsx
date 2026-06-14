@@ -18,6 +18,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // This mounted flag intentionally prevents hydration mismatch in ThemeToggle.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     // Check localStorage for saved theme preference, default to light
     const savedTheme = localStorage.getItem('theme') as Theme | null;
@@ -58,4 +60,3 @@ export function useTheme() {
   }
   return context;
 }
-

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Suspense } from 'react';
 import { getSortedPostsData } from '@/lib/blog';
 import BlogFilter from '@/components/BlogFilter';
@@ -40,4 +39,3 @@ export default async function Blog({ searchParams }: BlogProps) {
     </div>
   );
 }
-

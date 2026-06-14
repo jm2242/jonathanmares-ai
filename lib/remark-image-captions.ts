@@ -1,5 +1,8 @@
 import { visit } from 'unist-util-visit';
-import type { Root, Paragraph, Image, Emphasis, Text } from 'mdast';
+import type { Root, RootContent, Paragraph, Image, Emphasis, Html, Text } from 'mdast';
+import type { Parent } from 'unist';
+
+type CaptionParent = Parent & { children: RootContent[] };
 
 /**
  * Remark plugin that transforms markdown patterns like:
@@ -23,7 +26,7 @@ export function remarkImageCaptions() {
     const replacements: Array<{ 
       paragraph: Paragraph; 
       imageIndex: number;
-      parent: any;
+      parent: CaptionParent;
     }> = [];
     
     visit(tree, 'paragraph', (paragraph: Paragraph, index, parent) => {
@@ -33,22 +36,16 @@ export function remarkImageCaptions() {
       const imageIndex = paragraph.children.findIndex(child => child.type === 'image');
       if (imageIndex === -1) return;
       
-      const image = paragraph.children[imageIndex] as Image;
-      
       // Check if there's an em (italic) node after the image (could be next sibling in same paragraph)
       const emIndex = paragraph.children.findIndex((child, idx) => 
         idx > imageIndex && child.type === 'emphasis'
       );
       
       if (emIndex !== -1) {
-        // Found image + caption in same paragraph
-        const emNode = paragraph.children[emIndex] as Emphasis;
-        const captionText = extractTextFromEmphasis(emNode);
-        
         replacements.push({
           paragraph,
           imageIndex: parent.children.indexOf(paragraph),
-          parent,
+          parent: parent as CaptionParent,
         });
         
         // We'll replace this paragraph with a figure HTML node
@@ -88,10 +85,10 @@ export function remarkImageCaptions() {
             const figureHtml = {
               type: 'html',
               value: `<figure>\n  <img src="${escapedUrl}" alt="${escapedAlt}" />\n  <figcaption>${escapedCaption}</figcaption>\n</figure>`,
-            };
+            } satisfies Html;
             
             // Replace image with figure and remove caption paragraph
-            parent.children[imageIndex] = figureHtml as any;
+            parent.children[imageIndex] = figureHtml;
             parent.children.splice(i, 1);
             break;
           } else {
@@ -120,9 +117,9 @@ export function remarkImageCaptions() {
       const figureHtml = {
         type: 'html',
         value: `<figure>\n  <img src="${escapedUrl}" alt="${escapedAlt}" />\n  <figcaption>${escapedCaption}</figcaption>\n</figure>`,
-      };
+      } satisfies Html;
       
-      parent.children[imageIndex] = figureHtml as any;
+      parent.children[imageIndex] = figureHtml;
     });
   };
 }
