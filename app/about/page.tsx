@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { writingInterestFilters } from "@/lib/writing-interests";
 
 const timeline = [
@@ -137,12 +138,13 @@ export default function About() {
               <h2 className="mb-5 text-2xl font-bold text-[var(--foreground)]">Interests</h2>
               <div className="flex flex-wrap gap-2">
                 {writingInterestFilters.map((interest) => (
-                  <span
+                  <Link
                     key={interest.value}
-                    className="rounded-full border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-2 text-sm font-bold text-[var(--foreground)]"
+                    href={`/blog?interest=${interest.value}`}
+                    className="inline-flex min-h-10 cursor-pointer items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-2 text-sm font-bold text-[var(--foreground)] transition hover:border-[#b7c3ba] hover:bg-[var(--surface)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--green-dark)] dark:hover:border-[#53625d]"
                   >
                     {interest.label}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </section>

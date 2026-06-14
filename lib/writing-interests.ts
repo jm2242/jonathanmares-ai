@@ -1,10 +1,17 @@
 export const writingInterestFilters = [
-  { label: "Cycling", value: "cycling" },
-  { label: "DIY Projects", value: "diy-projects" },
-  { label: "Hiking", value: "hiking" },
-  { label: "Jazz", value: "jazz" },
-  { label: "Sauna", value: "sauna" },
-  { label: "Weightlifting", value: "weightlifting" },
+  { label: "Cycling", value: "cycling", tags: ["cycling"] },
+  { label: "DIY Projects", value: "diy-projects", tags: ["diy-projects"] },
+  {
+    label: "Engineering",
+    value: "engineering",
+    tags: ["tech", "software", "react", "redux", "github", "api"],
+  },
+  { label: "Hiking", value: "hiking", tags: ["hiking"] },
+  { label: "Jazz", value: "jazz", tags: ["jazz"] },
+  { label: "Motorcycles", value: "motorcycles", tags: ["motorcycle"] },
+  { label: "Music", value: "music", tags: ["piano", "classical", "jazz", "recordings"] },
+  { label: "Sauna", value: "sauna", tags: ["sauna"] },
+  { label: "Weightlifting", value: "weightlifting", tags: ["weightlifting"] },
 ] as const;
 
 export type WritingInterestValue = (typeof writingInterestFilters)[number]["value"];
@@ -17,7 +24,8 @@ export function postMatchesWritingInterest(
   post: { tags?: string[] },
   interest: { value: WritingInterestValue }
 ) {
-  return post.tags?.includes(interest.value) ?? false;
+  const filter = getWritingInterestFilter(interest.value);
+  return filter?.tags.some((tag) => post.tags?.includes(tag)) ?? false;
 }
 
 export function displayWritingCategory(tags?: string[]) {
