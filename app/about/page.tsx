@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { writingInterestFilters } from "@/lib/writing-interests";
 
 const timeline = [
   {
@@ -30,8 +31,6 @@ const timeline = [
     body: "Previously an engineering manager at Quorum before joining Google.",
   },
 ];
-
-const interests = ["Piano", "Soccer", "Mountain biking", "Motorcycles", "Wine"];
 
 export default function About() {
   return (
@@ -137,12 +136,12 @@ export default function About() {
             <section className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-sm">
               <h2 className="mb-5 text-2xl font-bold text-[var(--foreground)]">Interests</h2>
               <div className="flex flex-wrap gap-2">
-                {interests.map((interest) => (
+                {writingInterestFilters.map((interest) => (
                   <span
-                    key={interest}
+                    key={interest.value}
                     className="rounded-full border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-2 text-sm font-bold text-[var(--foreground)]"
                   >
-                    {interest}
+                    {interest.label}
                   </span>
                 ))}
               </div>
