@@ -17,7 +17,9 @@ export default function Contact() {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(
+          Array.from(formData.entries(), ([key, value]) => [key, String(value)])
+        ).toString(),
       });
 
       if (response.ok) {
@@ -27,7 +29,7 @@ export default function Contact() {
       } else {
         throw new Error('Form submission failed');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setMessage('Sorry, there was an error sending your message. Please try again or email me directly at contact@jonathanmares.com');
     }
@@ -37,7 +39,7 @@ export default function Contact() {
     <div className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="text-4xl font-bold mb-4 text-[#111111] dark:text-gray-100">Contact</h1>
       <p className="text-lg text-[#1a1a1a] dark:text-gray-400 mb-8">
-        Feel free to reach out! I'm always interested in connecting with fellow musicians, 
+        Feel free to reach out! I&apos;m always interested in connecting with fellow musicians,
         engineers, and motorcycle enthusiasts.
       </p>
 
@@ -53,7 +55,7 @@ export default function Contact() {
         <input type="hidden" name="bot-field" />
         <p style={{ display: 'none' }}>
           <label>
-            Don't fill this out if you're human: <input name="bot-field" />
+            Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
           </label>
         </p>
 

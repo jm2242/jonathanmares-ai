@@ -4,7 +4,7 @@ import { auth } from '@/auth';
 import type { Post } from '@/types/board';
 
 // GET /api/posts - List all posts sorted by most recent
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
 
@@ -97,4 +97,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-

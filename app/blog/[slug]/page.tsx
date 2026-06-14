@@ -15,7 +15,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   let post;
   try {
     post = await getPostData(slug);
-  } catch (error) {
+  } catch {
     notFound();
   }
 
@@ -58,4 +58,3 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     </article>
   );
 }
-

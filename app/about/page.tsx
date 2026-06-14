@@ -7,10 +7,10 @@ export default function About() {
 
       <div className="mb-8">
         <Image
-          src="/images/cheese.jpg"
+          src="/images/jonathan-mares-profile.png"
           alt="Jonathan Mares"
-          width={600}
-          height={800}
+          width={1058}
+          height={1323}
           className="rounded-lg shadow-lg object-cover w-full max-w-md mx-auto"
           priority
         />
@@ -18,13 +18,23 @@ export default function About() {
 
       <div className="prose prose-lg dark:prose-invert max-w-none">
         <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
-          Hi! I'm Jonathan Mares. I'm currently based out of the East Bay in Northern California and
-          am a software engineer at Google in Google Wallet.
+          Hi, I&apos;m Jonathan. I&apos;m a software engineer based in the East Bay in Northern
+          California. I work at Google, where I spent about four years building products for Google
+          Wallet and now work on{" "}
+          <a
+            href="https://www.tapestryenergy.com/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            Tapestry
+          </a>
+          , focused on technology for the future of the electric grid.
         </p>
 
         <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
-          Originally from Be'er Sheva, Israel, I grew up in New York and spent my college years at
-          Cornell, studying Chemical Engineering and Computer Science. In my free time, I enjoy
+          Originally from Be&apos;er Sheva, Israel, I grew up in New York and spent my college years
+          at Cornell, studying Chemical Engineering and Computer Science. In my free time, I enjoy
           playing classical and jazz piano, soccer, mountain biking, motorcycles, and pretending to
           understand wine. You can find my recordings and performances on my{" "}
           <a
@@ -61,7 +71,7 @@ export default function About() {
         </p>
 
         <p className="text-lg text-[#1a1a1a] dark:text-gray-300 leading-relaxed mb-6">
-          If you'd like to reach me, you can write to me at{" "}
+          If you&apos;d like to reach me, you can write to me at{" "}
           <a
             href="mailto:contact@jonathanmares.com"
             className="text-blue-600 dark:text-blue-400 hover:underline"

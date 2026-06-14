@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
 
 export default function CreatePostForm() {
-  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -124,4 +122,3 @@ export default function CreatePostForm() {
     </form>
   );
 }
-
