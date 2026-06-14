@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useTheme } from './ThemeProvider';
+import { useTheme } from "./ThemeProvider";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme, mounted } = useTheme();
@@ -15,11 +15,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      className="rounded-full p-2 text-[var(--muted)] transition-colors hover:bg-[#eef2ed] hover:text-[var(--green-dark)] dark:hover:bg-[#202b27] dark:hover:text-white"
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
-      {theme === 'light' ? (
+      {theme === "light" ? (
         // Moon icon for dark mode
         <svg
           className="w-5 h-5"
@@ -55,4 +55,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-

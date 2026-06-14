@@ -1,51 +1,88 @@
-import Link from 'next/link';
-import { getSortedPostsData } from '@/lib/blog';
+import Image from "next/image";
+import Link from "next/link";
+import { getSortedPostsData } from "@/lib/blog";
 
 interface BlogPostListProps {
   posts: ReturnType<typeof getSortedPostsData>;
 }
 
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function displayTag(tags?: string[]) {
+  if (!tags?.length) return "Writing";
+  if (tags.includes("motorcycle")) return "Motorcycle";
+  if (tags.includes("piano")) return "Piano";
+  if (tags.some((tag) => ["tech", "software", "react"].includes(tag))) return "Software";
+  return tags[0];
+}
+
 export default function BlogPostList({ posts }: BlogPostListProps) {
   return (
-    <div className="space-y-6">
-      {posts.map((post) => (
+    <div className="grid gap-5">
+      {posts.map((post, index) => (
         <Link
           key={post.slug}
           href={`/blog/${post.slug}`}
-          className="block p-6 bg-[#f9fafb] dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md transition-all group"
+          className={`group overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b7c3ba] hover:shadow-md dark:hover:border-[#53625d] ${
+            index === 0 ? "md:grid md:grid-cols-[0.9fr_1.1fr]" : "md:grid md:grid-cols-[220px_1fr]"
+          }`}
         >
-          <h2 className="text-2xl font-semibold mb-2 text-[#111111] dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            {post.title}
-          </h2>
-          <div className="flex items-center gap-4 text-sm text-[#374151] dark:text-gray-400 mb-2">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
+          <div
+            className={`relative bg-[var(--surface-muted)] ${
+              index === 0 ? "min-h-[260px] md:min-h-[320px]" : "min-h-[180px] md:min-h-full"
+            }`}
+          >
+            {post.cover ? (
+              <Image
+                src={post.cover}
+                alt=""
+                fill
+                sizes={index === 0 ? "(min-width: 768px) 45vw, 100vw" : "220px"}
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <div className="flex h-full min-h-[180px] items-center justify-center bg-[#dfe9e5] p-6 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--green-dark)] dark:bg-[#22332f]">
+                {displayTag(post.tags)}
+              </div>
+            )}
           </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-1 text-xs rounded-full bg-gray-200 dark:bg-gray-800 text-[#374151] dark:text-gray-400"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-          {post.excerpt && (
-            <p className="text-[#1a1a1a] dark:text-gray-300 mt-2">
-              {post.excerpt}
+          <div className="p-5 sm:p-7">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--green)]">
+              {displayTag(post.tags)} · {formatDate(post.date)}
             </p>
-          )}
+            <h2
+              className={`font-serif-display leading-tight text-[var(--foreground)] group-hover:text-[var(--green)] ${
+                index === 0 ? "text-3xl sm:text-4xl" : "text-2xl"
+              }`}
+            >
+              {post.title}
+            </h2>
+            {post.excerpt && (
+              <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--muted)]">
+                {post.excerpt}
+              </p>
+            )}
+            {post.tags && post.tags.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {post.tags.slice(0, 4).map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[var(--line)] bg-[var(--surface-muted)] px-3 py-1 text-xs font-bold text-[var(--muted)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </Link>
       ))}
     </div>
   );
 }
-

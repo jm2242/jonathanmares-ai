@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useMemo } from 'react';
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 interface BlogFilterProps {
   posts: Array<{ slug: string; tags?: string[] }>;
@@ -11,7 +11,7 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const selectedTag = searchParams.get('tag');
+  const selectedTag = searchParams.get("tag");
 
   // Get all unique tags from all posts
   const allTags = useMemo(() => {
@@ -25,9 +25,9 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
   const handleTagClick = (tag: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
     if (tag && tag !== selectedTag) {
-      params.set('tag', tag);
+      params.set("tag", tag);
     } else {
-      params.delete('tag');
+      params.delete("tag");
     }
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -37,40 +37,46 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
     return posts.filter((post) => post.tags?.includes(selectedTag)).length;
   }, [posts, selectedTag]);
 
+  const promotedTags = ["tech", "motorcycle", "piano"];
+  const orderedTags = promotedTags.filter((tag) => allTags.includes(tag));
+  if (selectedTag && !orderedTags.includes(selectedTag) && allTags.includes(selectedTag)) {
+    orderedTags.push(selectedTag);
+  }
+
   return (
-    <div className="mb-8">
+    <div className="mb-10">
       <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span className="text-sm font-semibold text-[#111111] dark:text-gray-300 mr-2">Filter by tag:</span>
+        <span className="mr-2 text-sm font-extrabold text-[var(--foreground)]">Filter</span>
         <button
           onClick={() => handleTagClick(null)}
-          className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
+          className={`min-h-10 px-4 text-sm font-bold rounded-full border transition-colors cursor-pointer ${
             !selectedTag
-              ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
-              : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
+              ? "bg-[var(--green-dark)] text-white dark:bg-[#d9f0e9] dark:text-[#111816] border-[var(--green-dark)]"
+              : "bg-[var(--surface)] text-[var(--foreground)] border-[var(--line)] hover:border-[#b7c3ba] dark:hover:border-[#53625d]"
           }`}
         >
           All
         </button>
-        {allTags.map((tag) => (
+        {orderedTags.map((tag) => (
           <button
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
+            className={`min-h-10 px-4 text-sm font-bold rounded-full border transition-colors cursor-pointer ${
               selectedTag === tag
-                ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
-                : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
+                ? "bg-[var(--green-dark)] text-white dark:bg-[#d9f0e9] dark:text-[#111816] border-[var(--green-dark)]"
+                : "bg-[var(--surface)] text-[var(--foreground)] border-[var(--line)] hover:border-[#b7c3ba] dark:hover:border-[#53625d]"
             }`}
           >
-            {tag}
+            {tag === "tech" ? "Software" : tag.charAt(0).toUpperCase() + tag.slice(1)}
           </button>
         ))}
       </div>
       {selectedTag && (
-        <p className="text-sm text-[#374151] dark:text-gray-400">
-          Showing {filteredPostsCount} post{filteredPostsCount !== 1 ? 's' : ''} tagged with <strong>{selectedTag}</strong>
+        <p className="text-sm text-[var(--muted)]">
+          Showing {filteredPostsCount} post{filteredPostsCount !== 1 ? "s" : ""} tagged with{" "}
+          <strong>{selectedTag}</strong>
         </p>
       )}
     </div>
   );
 }
-

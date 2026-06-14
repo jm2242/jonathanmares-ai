@@ -1,45 +1,63 @@
-'use client';
+"use client";
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent } from "react";
 
 export default function Contact() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('submitting');
+    setStatus("submitting");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(
+          Array.from(formData.entries(), ([key, value]) => [key, String(value)])
+        ).toString(),
       });
 
       if (response.ok) {
-        setStatus('success');
-        setMessage('Thank you for your message! I\'ll get back to you soon.');
+        setStatus("success");
+        setMessage("Thank you for your message! I'll get back to you soon.");
         form.reset();
       } else {
-        throw new Error('Form submission failed');
+        throw new Error("Form submission failed");
       }
-    } catch (error) {
-      setStatus('error');
-      setMessage('Sorry, there was an error sending your message. Please try again or email me directly at contact@jonathanmares.com');
+    } catch {
+      setStatus("error");
+      setMessage(
+        "Sorry, there was an error sending your message. Please try again or email me directly at contact@jonathanmares.com"
+      );
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold mb-4 text-[#111111] dark:text-gray-100">Contact</h1>
-      <p className="text-lg text-[#1a1a1a] dark:text-gray-400 mb-8">
-        Feel free to reach out! I'm always interested in connecting with fellow musicians, 
-        engineers, and motorcycle enthusiasts.
-      </p>
+    <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 lg:px-10">
+      <header className="mb-10 max-w-3xl">
+        <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--green)]">
+          Contact
+        </p>
+        <h1 className="font-serif-display text-5xl leading-none text-[var(--foreground)] sm:text-6xl">
+          Say hello.
+        </h1>
+        <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+          Feel free to reach out. I&apos;m always interested in connecting with fellow musicians,
+          engineers, and motorcycle enthusiasts. Email works too:{" "}
+          <a
+            href="mailto:contact@jonathanmares.com"
+            className="font-semibold text-[var(--green)] underline decoration-2 underline-offset-4"
+          >
+            contact@jonathanmares.com
+          </a>
+          .
+        </p>
+      </header>
 
       <form
         name="contact"
@@ -47,13 +65,13 @@ export default function Contact() {
         data-netlify="true"
         netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
-        className="bg-[#f9fafb] dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-800 shadow-sm"
+        className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-soft)] sm:p-8"
       >
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="bot-field" />
-        <p style={{ display: 'none' }}>
+        <p style={{ display: "none" }}>
           <label>
-            Don't fill this out if you're human: <input name="bot-field" />
+            Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
           </label>
         </p>
 
@@ -61,7 +79,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-semibold text-black dark:text-gray-300 mb-2"
+              className="mb-2 block text-sm font-extrabold text-[var(--foreground)]"
             >
               Name
             </label>
@@ -70,7 +88,7 @@ export default function Contact() {
               id="name"
               name="name"
               required
-              className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-[#fafafa] dark:bg-gray-800 text-[#111111] dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="min-h-12 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-4 text-[var(--foreground)] placeholder:text-[var(--muted)] transition-colors focus:border-[var(--gold)] focus:outline-none focus:ring-2 focus:ring-[rgb(197_138_43/0.22)]"
               placeholder="Your name"
             />
           </div>
@@ -78,7 +96,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-black dark:text-gray-300 mb-2"
+              className="mb-2 block text-sm font-extrabold text-[var(--foreground)]"
             >
               Email
             </label>
@@ -87,7 +105,7 @@ export default function Contact() {
               id="email"
               name="email"
               required
-              className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-[#fafafa] dark:bg-gray-800 text-[#111111] dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="min-h-12 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-4 text-[var(--foreground)] placeholder:text-[var(--muted)] transition-colors focus:border-[var(--gold)] focus:outline-none focus:ring-2 focus:ring-[rgb(197_138_43/0.22)]"
               placeholder="your.email@example.com"
             />
           </div>
@@ -95,7 +113,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-semibold text-black dark:text-gray-300 mb-2"
+              className="mb-2 block text-sm font-extrabold text-[var(--foreground)]"
             >
               Message
             </label>
@@ -104,17 +122,17 @@ export default function Contact() {
               name="message"
               required
               rows={6}
-              className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-[#fafafa] dark:bg-gray-800 text-[#111111] dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-y"
+              className="w-full resize-y rounded-lg border border-[var(--line)] bg-[var(--paper)] px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--muted)] transition-colors focus:border-[var(--gold)] focus:outline-none focus:ring-2 focus:ring-[rgb(197_138_43/0.22)]"
               placeholder="Your message..."
             />
           </div>
 
           {message && (
             <div
-              className={`p-4 rounded-md border ${
-                status === 'success'
-                  ? 'bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-black dark:text-green-300'
-                  : 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-black dark:text-red-300'
+              className={`rounded-lg border p-4 text-sm font-semibold ${
+                status === "success"
+                  ? "bg-[#e7f2ed] dark:bg-[#1d362f] border-[#b6d6c9] dark:border-[#3e6f62] text-[#173e42] dark:text-[#d9f0e9]"
+                  : "bg-[#f8e8e6] dark:bg-[#3a211f] border-[#e2b5ae] dark:border-[#76504b] text-[#7e2f2b] dark:text-[#ffd2cb]"
               }`}
             >
               {message}
@@ -123,10 +141,10 @@ export default function Contact() {
 
           <button
             type="submit"
-            disabled={status === 'submitting'}
-            className="w-full px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white font-medium rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            disabled={status === "submitting"}
+            className="min-h-12 w-full rounded-full bg-[var(--green-dark)] px-6 py-3 font-extrabold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#d9f0e9] dark:text-[#111816]"
           >
-            {status === 'submitting' ? 'Sending...' : 'Send Message'}
+            {status === "submitting" ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>

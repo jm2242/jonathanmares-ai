@@ -40,13 +40,23 @@ export default async function Board() {
   const posts = await getPosts(isAuthenticated);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-[#111111] dark:text-gray-100">Board</h1>
+    <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 lg:px-10">
+      <header className="mb-10 max-w-3xl">
+        <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--green)]">
+          Board
+        </p>
+        <h1 className="font-serif-display text-5xl leading-none text-[var(--foreground)] sm:text-6xl">
+          Public Posts
+        </h1>
+        <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+          A small public board for notes and links. Public posts stay visible when signed out.
+        </p>
+      </header>
 
       {/* Sign in prompt for unauthenticated users */}
       {!isAuthenticated && (
-        <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <p className="text-blue-700 dark:text-blue-300 mb-3">
+        <div className="mb-8 rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6">
+          <p className="mb-4 text-[var(--muted)] sm:mb-0">
             Sign in with GitHub to create posts and upvote.
           </p>
           <form
@@ -57,7 +67,7 @@ export default async function Board() {
           >
             <button
               type="submit"
-              className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-md hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+              className="min-h-11 rounded-full bg-[var(--green-dark)] px-5 font-extrabold text-white transition hover:opacity-90 dark:bg-[#d9f0e9] dark:text-[#111816]"
             >
               Sign in with GitHub
             </button>
@@ -71,7 +81,7 @@ export default async function Board() {
       {/* Posts List */}
       <div className="space-y-4">
         {posts.length === 0 ? (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+          <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] py-12 text-center text-[var(--muted)]">
             <p className="text-lg mb-2">No posts yet</p>
             <p className="text-sm">Be the first to post!</p>
           </div>
@@ -82,7 +92,7 @@ export default async function Board() {
 
       {/* Sign Out Button */}
       {isAuthenticated && (
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-12 border-t border-[var(--line)] pt-8">
           <form
             action={async () => {
               "use server";
@@ -91,7 +101,7 @@ export default async function Board() {
           >
             <button
               type="submit"
-              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="min-h-10 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 font-bold text-[var(--foreground)] transition hover:bg-[var(--surface-muted)]"
             >
               Sign Out
             </button>
