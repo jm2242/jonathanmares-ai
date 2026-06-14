@@ -48,7 +48,7 @@ export default function Nav() {
               className="h-[34px] w-[34px] rounded-[9px]"
               priority
             />
-            <span className="hidden sm:inline text-sm font-bold text-[var(--foreground)]">
+            <span className="hidden text-base font-bold text-[var(--foreground)] sm:inline lg:text-[1.0625rem]">
               Jonathan Mares
             </span>
           </Link>

@@ -1,12 +1,31 @@
 import Image from "next/image";
 
 const timeline = [
-  ["Now", "Software engineer at Google, working on Google Wallet from the East Bay."],
-  ["Before", "Engineering manager at Quorum before joining Google."],
-  [
-    "Roots",
-    "Born in Be'er Sheva, raised in New York, and studied Chemical Engineering and Computer Science at Cornell.",
-  ],
+  {
+    label: "Tapestry",
+    body: (
+      <>
+        Now focused on{" "}
+        <a
+          href="https://www.tapestryenergy.com/en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-[var(--green)] underline decoration-2 underline-offset-4"
+        >
+          Tapestry
+        </a>
+        , technology for the future of the electric grid.
+      </>
+    ),
+  },
+  {
+    label: "Google Wallet",
+    body: "Spent about four years building products for Google Wallet at Google.",
+  },
+  {
+    label: "Quorum",
+    body: "Previously an engineering manager at Quorum before joining Google.",
+  },
 ];
 
 const interests = ["Piano", "Soccer", "Mountain biking", "Motorcycles", "Wine"];
@@ -26,10 +45,10 @@ export default function About() {
       <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <div className="relative overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)]">
           <Image
-            src="/images/cheese.jpg"
+            src="/images/jonathan-mares-profile.png"
             alt="Jonathan Mares"
-            width={1200}
-            height={1600}
+            width={1058}
+            height={1323}
             className="aspect-[4/5] w-full object-cover"
             priority
           />
@@ -39,8 +58,18 @@ export default function About() {
           <section className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-sm sm:p-8">
             <div className="space-y-6 text-lg leading-8 text-[var(--foreground)]">
               <p>
-                Hi! I&apos;m Jonathan Mares. I&apos;m currently based out of the East Bay in
-                Northern California and am a software engineer at Google in Google Wallet.
+                Hi, I&apos;m Jonathan. I&apos;m a software engineer based in the East Bay in
+                Northern California. I work at Google, where I spent about four years building
+                products for Google Wallet and now work on{" "}
+                <a
+                  href="https://www.tapestryenergy.com/en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[var(--green)] underline decoration-2 underline-offset-4"
+                >
+                  Tapestry
+                </a>
+                , focused on technology for the future of the electric grid.
               </p>
 
               <p>
@@ -70,16 +99,7 @@ export default function About() {
               </p>
 
               <p>
-                Previously, I was an engineering manager at{" "}
-                <a
-                  href="https://www.quorum.us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-[var(--green)] underline decoration-2 underline-offset-4"
-                >
-                  Quorum
-                </a>
-                . If you&apos;d like to reach me, you can write to me at{" "}
+                If you&apos;d like to reach me, you can write to me at{" "}
                 <a
                   href="mailto:contact@jonathanmares.com"
                   className="font-semibold text-[var(--green)] underline decoration-2 underline-offset-4"
@@ -93,10 +113,10 @@ export default function About() {
 
           <div className="grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
             <section className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-sm">
-              <h2 className="mb-5 text-2xl font-bold text-[var(--foreground)]">Work and Places</h2>
+              <h2 className="mb-5 text-2xl font-bold text-[var(--foreground)]">Work</h2>
               <div className="space-y-5">
-                {timeline.map(([label, body]) => (
-                  <div key={label} className="grid grid-cols-[72px_1fr] gap-4">
+                {timeline.map(({ label, body }) => (
+                  <div key={label} className="grid grid-cols-[112px_1fr] gap-4">
                     <span className="text-sm font-extrabold uppercase tracking-[0.08em] text-[var(--green)]">
                       {label}
                     </span>

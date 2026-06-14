@@ -146,7 +146,7 @@ export default function Piano() {
               <button
                 key={column}
                 onClick={() => handleSortClick(sectionKey, column as SortColumn)}
-                className="min-h-10 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-bold text-[var(--foreground)] transition hover:border-[#b7c3ba] dark:hover:border-[#53625d]"
+                className="min-h-10 cursor-pointer rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-bold text-[var(--foreground)] transition hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] dark:hover:border-[#53625d]"
               >
                 {label}
                 {currentState?.column === column && currentState?.order && (
@@ -224,10 +224,10 @@ export default function Piano() {
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`min-h-11 rounded-full border px-5 text-sm font-extrabold transition ${
+            className={`min-h-11 cursor-pointer rounded-full border px-5 text-sm font-extrabold transition ${
               activeTab === tab.key
-                ? "border-[var(--green-dark)] bg-[var(--green-dark)] text-white dark:bg-[#d9f0e9] dark:text-[#111816]"
-                : "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[#b7c3ba] dark:hover:border-[#53625d]"
+                ? "border-[var(--green-dark)] bg-[var(--green-dark)] text-white hover:opacity-90 dark:bg-[#d9f0e9] dark:text-[#111816]"
+                : "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] dark:hover:border-[#53625d]"
             }`}
           >
             {tab.label}

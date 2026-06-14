@@ -1,5 +1,8 @@
 import { visit } from "unist-util-visit";
-import type { Root, Paragraph, Image, Emphasis, Text, Parent, Html } from "mdast";
+import type { Root, RootContent, Paragraph, Image, Emphasis, Html, Text } from "mdast";
+import type { Parent } from "unist";
+
+type CaptionParent = Parent & { children: RootContent[] };
 
 /**
  * Remark plugin that transforms markdown patterns like:
@@ -23,7 +26,7 @@ export function remarkImageCaptions() {
     const replacements: Array<{
       paragraph: Paragraph;
       imageIndex: number;
-      parent: Parent;
+      parent: CaptionParent;
     }> = [];
 
     visit(tree, "paragraph", (paragraph: Paragraph, _index, parent) => {
@@ -43,7 +46,7 @@ export function remarkImageCaptions() {
         replacements.push({
           paragraph,
           imageIndex: parent.children.indexOf(paragraph),
-          parent,
+          parent: parent as CaptionParent,
         });
 
         // We'll replace this paragraph with a figure HTML node
@@ -80,10 +83,10 @@ export function remarkImageCaptions() {
             const figureHtml = {
               type: "html",
               value: `<figure>\n  <img src="${escapedUrl}" alt="${escapedAlt}" />\n  <figcaption>${escapedCaption}</figcaption>\n</figure>`,
-            };
+            } satisfies Html;
 
             // Replace image with figure and remove caption paragraph
-            parent.children[imageIndex] = figureHtml as Html;
+            parent.children[imageIndex] = figureHtml;
             parent.children.splice(i, 1);
             break;
           } else {
@@ -113,9 +116,9 @@ export function remarkImageCaptions() {
       const figureHtml = {
         type: "html",
         value: `<figure>\n  <img src="${escapedUrl}" alt="${escapedAlt}" />\n  <figcaption>${escapedCaption}</figcaption>\n</figure>`,
-      };
+      } satisfies Html;
 
-      parent.children[imageIndex] = figureHtml as Html;
+      parent.children[imageIndex] = figureHtml;
     });
   };
 }

@@ -47,8 +47,9 @@ export default function Home() {
             Jonathan Mares
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#edf3ef] sm:text-xl">
-            Notes on software systems, useful tools, motorcycle travel, and the practice of music. A
-            personal site with enough structure to browse, and enough texture to feel human.
+            I&apos;m a software engineer in the East Bay, building tools for complex systems, from
+            civic technology to Google Wallet to the future of the electric grid. This is where I
+            collect writing, projects, music, and notes from the road.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
