@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getSortedPostsData } from "@/lib/blog";
-import { displayWritingCategory, writingInterestFilters } from "@/lib/writing-interests";
+import { displayWritingCategory } from "@/lib/writing-interests";
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -154,22 +154,6 @@ export default function Home() {
           </div>
         )}
 
-        <div className="mt-10">
-          <p className="mb-4 text-sm font-extrabold uppercase tracking-[0.12em] text-[var(--green)]">
-            Interests
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {writingInterestFilters.map((interest) => (
-              <Link
-                key={interest.value}
-                href={`/blog?interest=${interest.value}`}
-                className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-extrabold text-[var(--foreground)] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--green-dark)] dark:hover:border-[#53625d]"
-              >
-                {interest.label}
-              </Link>
-            ))}
-          </div>
-        </div>
       </section>
     </div>
   );
