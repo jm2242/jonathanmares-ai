@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  --background: #fbfaf7;
+  --foreground: #121417;
+  --paper: #fbfaf7;
+  --surface: #ffffff;
+  --surface-muted: #f0f3ed;
+  --line: #d9ded8;
+  --muted: #5b6572;
+  --green: #276260;
+  --green-dark: #173e42;
+  --blue: #315f98;
+  --gold: #c58a2b;
+  --rose: #9d4c48;
+  --shadow-soft: 0 20px 60px rgb(25 32 38 / 12%);
 }
 
 @theme inline {
@@ -14,8 +27,19 @@
 
 /* Dark mode via class selector (for user toggle) */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0d1211;
+  --foreground: #f2f0ea;
+  --paper: #111816;
+  --surface: #17201d;
+  --surface-muted: #202b27;
+  --line: #33413c;
+  --muted: #b2bbb5;
+  --green: #8fc9bf;
+  --green-dark: #cbe7de;
+  --blue: #9abce6;
+  --gold: #dfb15b;
+  --rose: #df8b83;
+  --shadow-soft: 0 22px 70px rgb(0 0 0 / 34%);
 }
 
 body {
@@ -24,7 +48,10 @@ body {
   font-family: var(--font-body), "Source Sans Pro", "Source Sans 3", sans-serif;
 }
 
-/* Headings use Work Sans with weight 600 (same as old site) */
+::selection {
+  background: rgb(197 138 43 / 26%);
+}
+
 h1,
 h2,
 h3,
@@ -35,7 +62,6 @@ h6 {
   font-weight: 600;
 }
 
-/* Navigation and bold text use Work Sans weight 600 */
 nav a,
 button,
 [class*="font-bold"],
@@ -43,60 +69,22 @@ button,
   font-family: var(--font-heading), "Work Sans", sans-serif;
 }
 
-/* Default text color for light mode - near black */
-body:not(.dark) {
-  color: #111111;
+.font-serif-display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
 }
 
-/* Ensure headings and text elements use near black in light mode by default */
-:not(.dark) h1,
-:not(.dark) h2,
-:not(.dark) h3,
-:not(.dark) h4,
-:not(.dark) h5,
-:not(.dark) h6 {
-  color: #111111 !important;
+.site-focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
-:not(.dark) p {
-  color: #1a1a1a !important;
-}
-
-/* Ensure form labels are black in light mode */
-:not(.dark) label {
-  color: #000000 !important;
-}
-
-/* Ensure form labels are light in dark mode */
-.dark label {
-  color: #d1d5db !important;
-}
-
-/* Dark mode text colors - ensure all text is light and readable */
-.dark {
-  color: #e5e7eb !important; /* Light gray for body text */
-}
-
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark h6 {
-  color: #f3f4f6 !important; /* Very light gray for headings */
-}
-
-.dark p {
-  color: #d1d5db !important; /* Light gray for paragraphs */
-}
-
-/* Ensure post boxes are light in light mode - override any dark styles */
-html:not(.dark) .block.p-6 {
-  background-color: #f9fafb !important;
-}
-
-html:not(.dark) [class*="bg-\[#f9fafb\]"] {
-  background-color: #f9fafb !important;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 /* Prism Syntax Highlighting */
@@ -392,35 +380,26 @@ pre[class*="language-"] code {
   margin-top: 0 !important;
 }
 
-/* Form input styling - ensure light backgrounds in light mode only */
 html:not(.dark) input[type="text"],
 html:not(.dark) input[type="email"],
 html:not(.dark) input[type="tel"],
 html:not(.dark) textarea {
-  background-color: #fafafa !important;
-  color: #111111 !important;
+  background-color: var(--paper);
+  color: var(--foreground);
   font-family: var(--font-body), "Source Sans Pro", "Source Sans 3", sans-serif !important;
 }
 
 html:not(.dark) input::placeholder,
 html:not(.dark) textarea::placeholder {
-  color: #6b7280 !important;
+  color: var(--muted);
 }
 
-/* Ensure dark mode inputs stay dark */
 html.dark input[type="text"],
 html.dark input[type="email"],
 html.dark input[type="tel"],
 html.dark textarea {
-  background-color: #1f2937 !important;
-  color: #f9fafb !important;
-  font-family: var(--font-body), "Source Sans Pro", "Source Sans 3", sans-serif !important;
-}
-
-/* Force black text for success/error messages in light mode */
-html:not(.dark) .bg-green-50,
-html:not(.dark) .bg-red-50 {
-  color: #000000 !important;
+  background-color: var(--paper);
+  color: var(--foreground);
   font-family: var(--font-body), "Source Sans Pro", "Source Sans 3", sans-serif !important;
 }
 

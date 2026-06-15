@@ -2,7 +2,7 @@
 title: New Piano Recordings Page
 date: 2025-11-28
 excerpt: I've added a new page to showcase my classical and other piano recordings.
-tags: ["piano", "classical", "recordings"]
+tags: ["piano", "classical", "jazz", "recordings"]
 ---
 
 I'm excited to share that I've added a new **[Piano Recordings](/piano)** page to my website! This page features a collection of my classical and jazz piano performances, as well as covers of popular songs.

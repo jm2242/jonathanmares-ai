@@ -14,10 +14,10 @@ export default function Nav() {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
+    { href: "/blog", label: "Writing" },
     { href: "/piano", label: "Piano" },
-    { href: "/contact", label: "Contact" },
     { href: "/board", label: "Board" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const isActive = (href: string) => {
@@ -32,15 +32,25 @@ export default function Nav() {
   };
 
   return (
-    <nav className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+    <nav className="border-b border-[var(--line)] bg-[rgb(251_250_247/0.88)] dark:bg-[rgb(17_24_22/0.88)] backdrop-blur-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             aria-label="Home"
           >
-            <Image src="/logo.png" alt="J" width={32} height={32} className="w-8 h-8" priority />
+            <Image
+              src="/logo.png"
+              alt="J"
+              width={34}
+              height={34}
+              className="h-[34px] w-[34px] rounded-[9px]"
+              priority
+            />
+            <span className="hidden text-base font-bold text-[var(--foreground)] sm:inline lg:text-[1.0625rem]">
+              Jonathan Mares
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -51,22 +61,22 @@ export default function Nav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm lg:text-base font-medium transition-colors rounded-md px-2.5 py-1.5 whitespace-nowrap ${
+                  className={`text-sm font-semibold transition-colors rounded-full px-3 py-2 whitespace-nowrap ${
                     active
-                      ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
-                      : "text-[#1a1a1a] dark:text-gray-300 hover:text-[#111111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                      ? "bg-[#e1ece8] dark:bg-[#22332f] text-[var(--green-dark)] dark:text-[#d9f0e9]"
+                      : "text-[#26303a] dark:text-[#d7ddd7] hover:text-[var(--green-dark)] dark:hover:text-white hover:bg-[#eef2ed] dark:hover:bg-[#202b27]"
                   }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <div className="flex items-center gap-2 lg:gap-3 ml-2 border-l border-gray-300 dark:border-gray-700 pl-3 lg:pl-4 flex-shrink-0">
+            <div className="flex items-center gap-2 lg:gap-3 ml-2 border-l border-[var(--line)] pl-3 lg:pl-4 flex-shrink-0">
               <a
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md bg-blue-600 text-white text-sm lg:text-base font-semibold px-4 py-1.5 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#121417] dark:bg-[#f2f0ea] text-white dark:text-[#121417] text-sm font-bold px-4 shadow-sm hover:opacity-90 transition-opacity"
                 aria-label="View resume"
               >
                 Resume
@@ -75,7 +85,7 @@ export default function Nav() {
                 href="https://www.instagram.com/therealjonathanmares"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-[#111111] dark:hover:text-gray-200 transition-colors"
+                className="text-[var(--muted)] hover:text-[var(--green-dark)] dark:hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <svg
@@ -91,7 +101,7 @@ export default function Nav() {
                 href="https://linkedin.com/in/jonathanmares"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-[#111111] dark:hover:text-gray-200 transition-colors"
+                className="text-[var(--muted)] hover:text-[var(--green-dark)] dark:hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -107,7 +117,7 @@ export default function Nav() {
                 href="https://github.com/jm2242"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-[#111111] dark:hover:text-gray-200 transition-colors"
+                className="text-[var(--muted)] hover:text-[var(--green-dark)] dark:hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <svg
@@ -123,7 +133,7 @@ export default function Nav() {
                 href="https://www.youtube.com/@jmares93"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-[#111111] dark:hover:text-gray-200 transition-colors"
+                className="text-[var(--muted)] hover:text-[var(--green-dark)] dark:hover:text-white transition-colors"
                 aria-label="YouTube"
               >
                 <svg
@@ -144,7 +154,7 @@ export default function Nav() {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-[#1a1a1a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full text-[var(--foreground)] hover:bg-[#eef2ed] dark:hover:bg-[#202b27] transition-colors"
               aria-label="Toggle menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -177,7 +187,7 @@ export default function Nav() {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-2 border-t border-gray-200 dark:border-gray-800 pt-4">
+          <div className="md:hidden mt-4 pb-2 border-t border-[var(--line)] pt-4">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => {
                 const active = isActive(item.href);
@@ -186,10 +196,10 @@ export default function Nav() {
                     key={item.href}
                     href={item.href}
                     onClick={handleLinkClick}
-                    className={`text-base font-medium transition-colors rounded-md px-3 py-2 ${
+                    className={`text-base font-semibold transition-colors rounded-full px-3 py-2 ${
                       active
-                        ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
-                        : "text-[#1a1a1a] dark:text-gray-300 hover:text-[#111111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                        ? "bg-[#e1ece8] dark:bg-[#22332f] text-[var(--green-dark)] dark:text-[#d9f0e9]"
+                        : "text-[var(--foreground)] hover:bg-[#eef2ed] dark:hover:bg-[#202b27]"
                     }`}
                   >
                     {item.label}
@@ -201,12 +211,12 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleLinkClick}
-                className="mt-4 inline-flex w-full items-center justify-center rounded-md bg-blue-600 text-white text-base font-semibold px-4 py-2 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#121417] dark:bg-[#f2f0ea] text-white dark:text-[#121417] text-base font-bold px-4 shadow-sm hover:opacity-90 transition-opacity"
                 aria-label="View resume"
               >
                 Resume
               </a>
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
+              <div className="flex items-center gap-4 pt-4 border-t border-[var(--line)] mt-4">
                 <a
                   href="https://www.instagram.com/therealjonathanmares"
                   target="_blank"

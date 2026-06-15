@@ -57,16 +57,14 @@ export default function PostCard({ post, onVote }: PostCardProps) {
   };
 
   return (
-    <div className="flex gap-4 p-4 bg-[#f9fafb] dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors board-post-card">
+    <div className="flex gap-4 rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4 shadow-sm transition hover:border-[#b7c3ba] dark:hover:border-[#53625d] board-post-card">
       {/* Upvote Section */}
       <div className="flex flex-col items-center gap-1">
         <button
           onClick={handleVote}
           disabled={isVoting || userVoted}
-          className={`p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${
-            userVoted
-              ? "text-orange-500 dark:text-orange-400"
-              : "text-gray-500 hover:text-orange-500 dark:text-orange-300"
+          className={`rounded-full p-1 transition-colors hover:bg-[var(--surface-muted)] ${
+            userVoted ? "text-[var(--gold)]" : "text-[var(--muted)] hover:text-[var(--gold)]"
           } ${isVoting ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
           aria-label="Upvote"
         >
@@ -85,9 +83,7 @@ export default function PostCard({ post, onVote }: PostCardProps) {
         </button>
         <span
           className={`text-sm font-semibold ${
-            userVoted
-              ? "text-orange-500 dark:text-orange-400"
-              : "text-gray-700 dark:text-gray-400"
+            userVoted ? "text-[var(--gold)]" : "text-[var(--muted)]"
           }`}
         >
           {upvotes}
@@ -96,13 +92,11 @@ export default function PostCard({ post, onVote }: PostCardProps) {
 
       {/* Post Content */}
       <div className="flex-1 min-w-0">
-        <h3 className="text-lg font-semibold text-[#111111] dark:text-gray-100 mb-2">
-          {post.title}
-        </h3>
-        <div className="text-[#111111] dark:text-gray-300 mb-3 whitespace-pre-wrap break-words post-content">
+        <h3 className="mb-2 text-lg font-bold text-[var(--foreground)]">{post.title}</h3>
+        <div className="mb-3 whitespace-pre-wrap break-words leading-7 text-[var(--foreground)] post-content">
           {post.content}
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+        <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
           {post.author_avatar && (
             <Image
               src={post.author_avatar}
@@ -120,4 +114,3 @@ export default function PostCard({ post, onVote }: PostCardProps) {
     </div>
   );
 }
-

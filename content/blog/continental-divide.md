@@ -2,7 +2,7 @@
 title: Riding the Continental Divide on Adventure Motorcycles
 date: 2019-11-25
 excerpt: 3 Weeks in the Rockies riding over 2,000 miles
-tags: ["motorcycle"]
+tags: ["motorcycle", "hiking"]
 cover: /blog-images/marshall_pass_cover.jpg
 ---
 

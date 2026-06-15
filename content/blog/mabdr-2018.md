@@ -2,7 +2,7 @@
 title: Riding the Mid Atlantic Backcountry Discovery Route
 date: 2018-12-31
 excerpt: A summer 2018 Motorcycle Adventure
-tags: ["motorcycle"]
+tags: ["motorcycle", "hiking"]
 cover: /blog-images/cover.jpg
 ---
 

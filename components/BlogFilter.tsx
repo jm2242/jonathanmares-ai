@@ -1,7 +1,12 @@
-'use client';
+"use client";
 
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useMemo } from 'react';
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useMemo } from "react";
+import {
+  getWritingInterestFilter,
+  postMatchesWritingInterest,
+  writingInterestFilters,
+} from "@/lib/writing-interests";
 
 interface BlogFilterProps {
   posts: Array<{ slug: string; tags?: string[] }>;
@@ -11,66 +16,62 @@ export default function BlogFilter({ posts }: BlogFilterProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const selectedTag = searchParams.get('tag');
+  const selectedInterest = getWritingInterestFilter(searchParams.get("interest"));
 
-  // Get all unique tags from all posts
-  const allTags = useMemo(() => {
-    const tagSet = new Set<string>();
-    posts.forEach((post) => {
-      post.tags?.forEach((tag) => tagSet.add(tag));
-    });
-    return Array.from(tagSet).sort();
-  }, [posts]);
-
-  const handleTagClick = (tag: string | null) => {
+  const handleInterestClick = (interestValue: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (tag && tag !== selectedTag) {
-      params.set('tag', tag);
+    if (interestValue && interestValue !== selectedInterest?.value) {
+      params.set("interest", interestValue);
+      params.delete("tag");
     } else {
-      params.delete('tag');
+      params.delete("interest");
     }
-    router.push(`${pathname}?${params.toString()}`);
+
+    const query = params.toString();
+    router.push(query ? `${pathname}?${query}` : pathname);
   };
 
   const filteredPostsCount = useMemo(() => {
-    if (!selectedTag) return posts.length;
-    return posts.filter((post) => post.tags?.includes(selectedTag)).length;
-  }, [posts, selectedTag]);
+    if (!selectedInterest) return posts.length;
+    return posts.filter((post) => postMatchesWritingInterest(post, selectedInterest)).length;
+  }, [posts, selectedInterest]);
 
   return (
-    <div className="mb-8">
-      <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span className="text-sm font-semibold text-[#111111] dark:text-gray-300 mr-2">Filter by tag:</span>
+    <div className="mb-10">
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="mr-2 text-sm font-extrabold text-[var(--foreground)]">Filter</span>
         <button
-          onClick={() => handleTagClick(null)}
-          className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
-            !selectedTag
-              ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
-              : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
+          onClick={() => handleInterestClick(null)}
+          className={`min-h-10 cursor-pointer rounded-full border px-4 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--green-dark)] ${
+            !selectedInterest
+              ? "border-[var(--green-dark)] bg-[var(--green-dark)] text-white dark:bg-[#d9f0e9] dark:text-[#111816]"
+              : "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] dark:hover:border-[#53625d]"
           }`}
+          aria-pressed={!selectedInterest}
         >
           All
         </button>
-        {allTags.map((tag) => (
+        {writingInterestFilters.map((interest) => (
           <button
-            key={tag}
-            onClick={() => handleTagClick(tag)}
-            className={`px-3 py-1 text-sm rounded-full border transition-colors cursor-pointer ${
-              selectedTag === tag
-                ? 'bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500'
-                : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600'
+            key={interest.value}
+            onClick={() => handleInterestClick(interest.value)}
+            className={`min-h-10 cursor-pointer rounded-full border px-4 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--green-dark)] ${
+              selectedInterest?.value === interest.value
+                ? "border-[var(--green-dark)] bg-[var(--green-dark)] text-white dark:bg-[#d9f0e9] dark:text-[#111816]"
+                : "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[#b7c3ba] hover:bg-[var(--surface-muted)] dark:hover:border-[#53625d]"
             }`}
+            aria-pressed={selectedInterest?.value === interest.value}
           >
-            {tag}
+            {interest.label}
           </button>
         ))}
       </div>
-      {selectedTag && (
-        <p className="text-sm text-[#374151] dark:text-gray-400">
-          Showing {filteredPostsCount} post{filteredPostsCount !== 1 ? 's' : ''} tagged with <strong>{selectedTag}</strong>
+      {selectedInterest && (
+        <p className="text-sm text-[var(--muted)]">
+          Showing {filteredPostsCount} post{filteredPostsCount !== 1 ? "s" : ""} for{" "}
+          <strong>{selectedInterest.label}</strong>
         </p>
       )}
     </div>
   );
 }
-

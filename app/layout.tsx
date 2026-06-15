@@ -73,7 +73,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${sourceSansPro.variable} ${workSans.variable} antialiased bg-white dark:bg-gray-950 text-[#111111] dark:text-gray-100 min-h-screen flex flex-col`}
+        className={`${sourceSansPro.variable} ${workSans.variable} antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen flex flex-col`}
       >
         <ThemeProvider>
           <Nav />

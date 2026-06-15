@@ -56,14 +56,15 @@ export default function CreatePostForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#f9fafb] dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 mb-6 shadow-sm dark:shadow-none create-post-form">
-      <h2 className="text-xl font-semibold mb-2 text-[#111111] dark:text-gray-100">
-        Create a Post
-      </h2>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Write something nice!</p>
+    <form
+      onSubmit={handleSubmit}
+      className="mb-8 rounded-lg border border-[var(--line)] bg-[var(--surface)] p-5 shadow-sm create-post-form"
+    >
+      <h2 className="mb-2 text-xl font-bold text-[var(--foreground)]">Create a Post</h2>
+      <p className="mb-4 text-sm text-[var(--muted)]">Write something nice!</p>
 
       {error && (
-        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded text-red-700 dark:text-red-400 text-sm">
+        <div className="mb-4 rounded-lg border border-[#e2b5ae] bg-[#f8e8e6] p-3 text-sm font-semibold text-[#7e2f2b] dark:border-[#76504b] dark:bg-[#3a211f] dark:text-[#ffd2cb]">
           {error}
         </div>
       )}
@@ -71,7 +72,7 @@ export default function CreatePostForm() {
       <div className="mb-4">
         <label
           htmlFor="title"
-          className="block text-sm font-medium mb-2 text-[#111111] dark:text-gray-300"
+          className="mb-2 block text-sm font-extrabold text-[var(--foreground)]"
         >
           Title
         </label>
@@ -82,18 +83,16 @@ export default function CreatePostForm() {
           onChange={(e) => setTitle(e.target.value)}
           maxLength={300}
           placeholder="Enter post title..."
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="min-h-11 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3 text-[var(--foreground)] placeholder:text-[var(--muted)] focus:border-[var(--gold)] focus:outline-none focus:ring-2 focus:ring-[rgb(197_138_43/0.22)]"
           required
         />
-        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-right">
-          {title.length}/300
-        </div>
+        <div className="mt-1 text-right text-xs text-[var(--muted)]">{title.length}/300</div>
       </div>
 
       <div className="mb-4">
         <label
           htmlFor="content"
-          className="block text-sm font-medium mb-2 text-[#111111] dark:text-gray-300"
+          className="mb-2 block text-sm font-extrabold text-[var(--foreground)]"
         >
           Content
         </label>
@@ -104,18 +103,16 @@ export default function CreatePostForm() {
           maxLength={10000}
           rows={6}
           placeholder="What's on your mind?"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-[#111111] dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-[var(--foreground)] placeholder:text-[var(--muted)] focus:border-[var(--gold)] focus:outline-none focus:ring-2 focus:ring-[rgb(197_138_43/0.22)]"
           required
         />
-        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-right">
-          {content.length}/10,000
-        </div>
+        <div className="mt-1 text-right text-xs text-[var(--muted)]">{content.length}/10,000</div>
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting || !title.trim() || !content.trim()}
-        className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="min-h-11 w-full rounded-full bg-[var(--green-dark)] px-4 py-2 font-extrabold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#d9f0e9] dark:text-[#111816]"
       >
         {isSubmitting ? "Posting..." : "Post"}
       </button>
