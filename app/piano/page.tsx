@@ -24,6 +24,12 @@ const classicalRecordings: Recording[] = [
     url: "https://www.youtube.com/watch?v=EMTg8d6Xvcw",
   },
   {
+    title: "Impromptu Op 90 No 3 G flat major",
+    composer: "Schubert",
+    recordingDate: "07/26",
+    url: "https://www.youtube.com/watch?v=af-JVOf-Eu0",
+  },
+  {
     title: "Ballade in G Minor Op. 23",
     composer: "Chopin",
     recordingDate: "10/2010",
